@@ -1,0 +1,19 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/sim/myFifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myFifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_block.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nbyn_block_main
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_block_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nbyn_block
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openNocTop
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_pe.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nbyn_pe_main
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_pe_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nbyn_pe
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_scheduler.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scheduler_noc
+WARNING: [VRFC 10-2096] empty statement in sequential block [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_scheduler.v:105]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_switch.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nbyn
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/tb/nbyn_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Test_tb

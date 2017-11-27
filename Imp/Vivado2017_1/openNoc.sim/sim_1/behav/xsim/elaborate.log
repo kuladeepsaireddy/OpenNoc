@@ -1,0 +1,66 @@
+Vivado Simulator 2017.3
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: /opt/Xilinx/Vivado/2017.3/bin/unwrapped/lnx64.o/xelab -wto 0a08c6ceaa914cae91a2341ac849d7d3 --incr --debug typical --relax --mt 8 -L axis_infrastructure_v1_1_0 -L fifo_generator_v13_2_0 -L axis_data_fifo_v1_1_15 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Test_tb_behav xil_defaultlib.Test_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 8 differs from formal bit length 256 for port i_data_pci [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/tb/nbyn_tb.v:151]
+WARNING: [VRFC 10-278] actual bit length 8 differs from formal bit length 256 for port o_data_pci [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/tb/nbyn_tb.v:156]
+WARNING: [VRFC 10-278] actual bit length 264 differs from formal bit length 272 for port s_axis_tdata [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_pe.v:90]
+WARNING: [VRFC 10-278] actual bit length 264 differs from formal bit length 272 for port m_axis_tdata [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/nbyn_pe.v:93]
+WARNING: [VRFC 10-597] element index -1 into diff_count is out of bounds [/wrk/2017.3/nightly/2017_10_04_2018833/packages/customer/vivado/data/ip/xilinx/fifo_generator_v13_2/simulation/fifo_generator_vlog_beh.v:7763]
+WARNING: [VRFC 10-597] element index -1 into num_read_words_dc is out of bounds [/wrk/2017.3/nightly/2017_10_04_2018833/packages/customer/vivado/data/ip/xilinx/fifo_generator_v13_2/simulation/fifo_generator_vlog_beh.v:8080]
+WARNING: [VRFC 10-597] element index -1 into num_write_words_dc is out of bounds [/wrk/2017.3/nightly/2017_10_04_2018833/packages/customer/vivado/data/ip/xilinx/fifo_generator_v13_2/simulation/fifo_generator_vlog_beh.v:8130]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.nbyn(x_coord=0,y_coord=0)
+Compiling module axis_infrastructure_v1_1_0.axis_infrastructure_v1_1_0_util_...
+Compiling module axis_infrastructure_v1_1_0.axis_infrastructure_v1_1_0_util_...
+Compiling module axis_infrastructure_v1_1_0.axis_infrastructure_v1_1_0_util_...
+Compiling module fifo_generator_v13_2_0.fifo_generator_v13_2_0_bhv_ver_s...
+Compiling module fifo_generator_v13_2_0.fifo_generator_v13_2_0_bhv_ver_p...
+Compiling module fifo_generator_v13_2_0.fifo_generator_v13_2_0_CONV_VER(...
+Compiling module fifo_generator_v13_2_0.fifo_generator_vlog_beh(C_COMMON...
+Compiling module fifo_generator_v13_2_0.fifo_generator_v13_2_0(C_COMMON_...
+Compiling module axis_infrastructure_v1_1_0.axis_infrastructure_v1_1_0_util_...
+Compiling module axis_data_fifo_v1_1_15.axis_data_fifo_v1_1_15_axis_data...
+Compiling module xil_defaultlib.myFifo
+Compiling module xil_defaultlib.scheduler_noc
+Compiling module xil_defaultlib.nbyn_pe_main
+Compiling module xil_defaultlib.nbyn_block_main(x_coord=0,y_coor...
+Compiling module xil_defaultlib.nbyn(x_coord=0,y_coord=1)
+Compiling module xil_defaultlib.nbyn_pe
+Compiling module xil_defaultlib.nbyn_block(x_coord=0,y_coord=1)
+Compiling module xil_defaultlib.nbyn(x_coord=0,y_coord=2)
+Compiling module xil_defaultlib.nbyn_block(x_coord=0,y_coord=2)
+Compiling module xil_defaultlib.nbyn(x_coord=0,y_coord=3)
+Compiling module xil_defaultlib.nbyn_block(x_coord=0,y_coord=3)
+Compiling module xil_defaultlib.nbyn(x_coord=1,y_coord=0)
+Compiling module xil_defaultlib.nbyn_block(x_coord=1,y_coord=0)
+Compiling module xil_defaultlib.nbyn(x_coord=1,y_coord=1)
+Compiling module xil_defaultlib.nbyn_block(x_coord=1,y_coord=1)
+Compiling module xil_defaultlib.nbyn(x_coord=1,y_coord=2)
+Compiling module xil_defaultlib.nbyn_block(x_coord=1,y_coord=2)
+Compiling module xil_defaultlib.nbyn(x_coord=1,y_coord=3)
+Compiling module xil_defaultlib.nbyn_block(x_coord=1,y_coord=3)
+Compiling module xil_defaultlib.nbyn(x_coord=2,y_coord=0)
+Compiling module xil_defaultlib.nbyn_block(x_coord=2,y_coord=0)
+Compiling module xil_defaultlib.nbyn(x_coord=2,y_coord=1)
+Compiling module xil_defaultlib.nbyn_block(x_coord=2,y_coord=1)
+Compiling module xil_defaultlib.nbyn(x_coord=2,y_coord=2)
+Compiling module xil_defaultlib.nbyn_block(x_coord=2,y_coord=2)
+Compiling module xil_defaultlib.nbyn(x_coord=2,y_coord=3)
+Compiling module xil_defaultlib.nbyn_block(x_coord=2,y_coord=3)
+Compiling module xil_defaultlib.nbyn(x_coord=3,y_coord=0)
+Compiling module xil_defaultlib.nbyn_block(x_coord=3,y_coord=0)
+Compiling module xil_defaultlib.nbyn(x_coord=3,y_coord=1)
+Compiling module xil_defaultlib.nbyn_block(x_coord=3,y_coord=1)
+Compiling module xil_defaultlib.nbyn(x_coord=3,y_coord=2)
+Compiling module xil_defaultlib.nbyn_block(x_coord=3,y_coord=2)
+Compiling module xil_defaultlib.nbyn(x_coord=3,y_coord=3)
+Compiling module xil_defaultlib.nbyn_block(x_coord=3,y_coord=3)
+Compiling module xil_defaultlib.openNocTop_default
+Compiling module xil_defaultlib.Test_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot Test_tb_behav

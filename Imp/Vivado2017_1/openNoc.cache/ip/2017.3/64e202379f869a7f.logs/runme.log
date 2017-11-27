@@ -1,0 +1,64 @@
+
+*** Running vivado
+    with args -log myFifo.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source myFifo.tcl
+
+
+****** Vivado v2017.3 (64-bit)
+  **** SW Build 2018833 on Wed Oct  4 19:58:07 MDT 2017
+  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source myFifo.tcl -notrace
+Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1302.711 ; gain = 84.996 ; free physical = 1312 ; free virtual = 195388
+INFO: [Synth 8-638] synthesizing module 'myFifo' [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/synth/myFifo.v:57]
+INFO: [Synth 8-638] synthesizing module 'axis_data_fifo_v1_1_15_axis_data_fifo' [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/hdl/axis_data_fifo_v1_1_vl_rfs.v:62]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_util_aclken_converter_wrapper' [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/hdl/axis_infrastructure_v1_1_vl_rfs.v:600]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector' [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/hdl/axis_infrastructure_v1_1_vl_rfs.v:810]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector' (1#1) [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/hdl/axis_infrastructure_v1_1_vl_rfs.v:810]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis' [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/hdl/axis_infrastructure_v1_1_vl_rfs.v:992]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis' (2#1) [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/hdl/axis_infrastructure_v1_1_vl_rfs.v:992]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_util_aclken_converter_wrapper' (3#1) [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/hdl/axis_infrastructure_v1_1_vl_rfs.v:600]
+INFO: [Synth 8-638] synthesizing module 'xpm_cdc_sync_rst' [/opt/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1045]
+INFO: [Synth 8-256] done synthesizing module 'xpm_cdc_sync_rst' (4#1) [/opt/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1045]
+INFO: [Synth 8-256] done synthesizing module 'axis_data_fifo_v1_1_15_axis_data_fifo' (33#1) [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/hdl/axis_data_fifo_v1_1_vl_rfs.v:62]
+INFO: [Synth 8-256] done synthesizing module 'myFifo' (34#1) [/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/rtl/ip/myFifo/synth/myFifo.v:57]
+Finished RTL Elaboration : Time (s): cpu = 00:03:51 ; elapsed = 00:04:03 . Memory (MB): peak = 1681.141 ; gain = 463.426 ; free physical = 1269 ; free virtual = 195209
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:03:52 ; elapsed = 00:04:05 . Memory (MB): peak = 1681.141 ; gain = 463.426 ; free physical = 1339 ; free virtual = 195275
+INFO: [Device 21-403] Loading part xc7a200tfbg676-2
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.11 . Memory (MB): peak = 1895.164 ; gain = 3.000 ; free physical = 1031 ; free virtual = 194985
+Finished Constraint Validation : Time (s): cpu = 00:04:12 ; elapsed = 00:04:33 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 1128 ; free virtual = 195113
+Finished Loading Part and Timing Information : Time (s): cpu = 00:04:12 ; elapsed = 00:04:33 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 1128 ; free virtual = 195113
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:04:12 ; elapsed = 00:04:33 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 1127 ; free virtual = 195112
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:04:20 ; elapsed = 00:04:42 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 1121 ; free virtual = 195103
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:04:27 ; elapsed = 00:04:51 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 1104 ; free virtual = 195082
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:04:33 ; elapsed = 00:04:59 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 995 ; free virtual = 194982
+Finished Timing Optimization : Time (s): cpu = 00:04:35 ; elapsed = 00:05:01 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 926 ; free virtual = 194971
+Finished Technology Mapping : Time (s): cpu = 00:04:37 ; elapsed = 00:05:03 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 953 ; free virtual = 194968
+Finished IO Insertion : Time (s): cpu = 00:04:38 ; elapsed = 00:05:04 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 963 ; free virtual = 194969
+Finished Renaming Generated Instances : Time (s): cpu = 00:04:38 ; elapsed = 00:05:04 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 963 ; free virtual = 194969
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:39 ; elapsed = 00:05:05 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 955 ; free virtual = 194969
+Finished Renaming Generated Ports : Time (s): cpu = 00:04:39 ; elapsed = 00:05:05 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 955 ; free virtual = 194969
+Finished Handling Custom Attributes : Time (s): cpu = 00:04:39 ; elapsed = 00:05:05 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 955 ; free virtual = 194969
+Finished Renaming Generated Nets : Time (s): cpu = 00:04:39 ; elapsed = 00:05:06 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 955 ; free virtual = 194969
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |CARRY4     |    12|
+|2     |LUT1       |     7|
+|3     |LUT2       |   733|
+|4     |LUT3       |    19|
+|5     |LUT4       |    34|
+|6     |LUT5       |     2|
+|7     |LUT6       |   794|
+|8     |MUXCY      |    32|
+|9     |MUXF7      |   270|
+|10    |RAMB36E1   |     2|
+|11    |RAMB36E1_1 |   240|
+|12    |SRL16E     |   484|
+|13    |FDRE       |  3002|
+|14    |FDSE       |    12|
++------+-----------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:04:39 ; elapsed = 00:05:06 . Memory (MB): peak = 1895.164 ; gain = 677.449 ; free physical = 955 ; free virtual = 194969
+synth_design: Time (s): cpu = 00:04:43 ; elapsed = 00:05:09 . Memory (MB): peak = 1895.172 ; gain = 702.285 ; free physical = 1013 ; free virtual = 195027

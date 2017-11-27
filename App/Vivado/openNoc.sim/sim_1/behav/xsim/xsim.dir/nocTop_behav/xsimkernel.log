@@ -1,0 +1,7 @@
+Running: xsim.dir/nocTop_behav/xsimk -simmode gui -wdb nocTop_behav.wdb -simrunnum 0 -socket 43107
+Design successfully loaded
+Design Loading Memory Usage: 50988 KB (Peak: 50988 KB)
+Design Loading CPU Usage: 10 ms
+Simulation completed
+Simulation Memory Usage: 137248 KB (Peak: 198260 KB)
+Simulation CPU Usage: 20 ms

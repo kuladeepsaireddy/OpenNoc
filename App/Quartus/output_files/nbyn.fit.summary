@@ -1,0 +1,22 @@
+Fitter Status : Successful - Tue Oct 24 12:26:46 2017
+Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+Revision Name : nbyn
+Top-level Entity Name : nbyn_switch
+Family : Arria II GX
+Device : EP2AGX45CU17C4
+Timing Models : Final
+Logic utilization : < 1 %
+    Combinational ALUTs : 53 / 36,100 ( < 1 % )
+    Memory ALUTs : 0 / 18,050 ( 0 % )
+    Dedicated logic registers : 39 / 36,100 ( < 1 % )
+Total registers : 39
+Total pins : 1 / 176 ( < 1 % )
+Total virtual pins : 83
+Total block memory bits : 0 / 2,939,904 ( 0 % )
+DSP block 18-bit elements : 0 / 232 ( 0 % )
+Total GXB Receiver Channel PCS : 0 / 4 ( 0 % )
+Total GXB Receiver Channel PMA : 0 / 4 ( 0 % )
+Total GXB Transmitter Channel PCS : 0 / 4 ( 0 % )
+Total GXB Transmitter Channel PMA : 0 / 4 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
+Total DLLs : 0 / 2 ( 0 % )

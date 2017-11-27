@@ -1,0 +1,2 @@
+myFifo.v,verilog,xil_defaultlib,../../../../../../src/Verilog/VivadoIPs/myFifo/sim/myFifo.v,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+glbl.v,Verilog,xil_defaultlib,glbl.v

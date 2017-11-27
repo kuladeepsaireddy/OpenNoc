@@ -1,0 +1,10 @@
+xpm_cdc.sv,systemverilog,xil_defaultlib,../../../../../../opt/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+xpm_memory.sv,systemverilog,xil_defaultlib,../../../../../../opt/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+xpm_VCOMP.vhd,vhdl,xpm,../../../../../../opt/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_VCOMP.vhd,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+axis_infrastructure_v1_1_vl_rfs.v,verilog,axis_infrastructure_v1_1_0,../../../ipstatic/hdl/axis_infrastructure_v1_1_vl_rfs.v,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+fifo_generator_vlog_beh.v,verilog,fifo_generator_v13_2_0,../../../ipstatic/simulation/fifo_generator_vlog_beh.v,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+fifo_generator_v13_2_rfs.vhd,vhdl,fifo_generator_v13_2_0,../../../ipstatic/hdl/fifo_generator_v13_2_rfs.vhd,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+fifo_generator_v13_2_rfs.v,verilog,fifo_generator_v13_2_0,../../../ipstatic/hdl/fifo_generator_v13_2_rfs.v,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+axis_data_fifo_v1_1_vl_rfs.v,verilog,axis_data_fifo_v1_1_15,../../../ipstatic/hdl/axis_data_fifo_v1_1_vl_rfs.v,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+myFifo.v,verilog,xil_defaultlib,../../../../../../src/Verilog/VivadoIPs/myFifo/sim/myFifo.v,incdir="$ref_dir/../../../ipstatic/hdl"incdir="../../../ipstatic/hdl"
+glbl.v,Verilog,xil_defaultlib,glbl.v

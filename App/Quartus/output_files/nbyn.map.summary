@@ -1,0 +1,20 @@
+Analysis & Synthesis Status : Successful - Tue Oct 24 12:26:36 2017
+Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+Revision Name : nbyn
+Top-level Entity Name : nbyn_switch
+Family : Arria II GX
+Logic utilization : N/A
+    Combinational ALUTs : 53
+    Memory ALUTs : 0
+    Dedicated logic registers : 39
+Total registers : 39
+Total pins : 1
+Total virtual pins : 83
+Total block memory bits : 0
+DSP block 18-bit elements : 0
+Total GXB Receiver Channel PCS : 0
+Total GXB Receiver Channel PMA : 0
+Total GXB Transmitter Channel PCS : 0
+Total GXB Transmitter Channel PMA : 0
+Total PLLs : 0
+Total DLLs : 0

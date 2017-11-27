@@ -1,0 +1,6 @@
+verilog xil_defaultlib --include "../../../ipstatic/hdl" \
+"../../../../../../src/Verilog/VivadoIPs/myFifo/sim/myFifo.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
