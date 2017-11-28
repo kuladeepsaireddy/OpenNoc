@@ -1,3 +1,5 @@
+`include "include_file.v"
+
 `define headerSize 1078
 `define imageSize 262144
 `timescale 1ns/1ps
@@ -25,8 +27,8 @@ integer rtn1;
 reg rst;
 initial
 begin
-file=$fopen("../../../../../../data/lena512.bmp","rb");
-file1=$fopen("../../../../../../data/outputLena.bmp","wb");
+file=$fopen("../../../../../../../data/lena512.bmp","rb");
+file1=$fopen("../../../../../../../data/outputLena.bmp","wb");
 if(file == 0)
 begin
     $display("Cannot open the image file");
@@ -142,21 +144,43 @@ begin
 		end
      end
 end
- 
-openNocTop DUT(
+
+wire [(`X*`Y)-1:0] r_valid_pe;
+wire [(`total_width*`X*`Y)-1:0] r_data_pe;
+wire [(`X*`Y)-1:0] r_ready_pe;
+wire [(`X*`Y)-1:0] w_valid_pe;
+wire [(`total_width*`X*`Y)-1:0] w_data_pe;
+
+openNocTop ON
+(
 .clk(clk),
-.rst(rst),
-// PCI - Scheduler interface ////
+.rstn(rst),
+.r_valid_pe(r_valid_pe),
+.r_data_pe(r_data_pe),
+.r_ready_pe(r_ready_pe),
+.w_valid_pe(w_valid_pe),
+.w_data_pe(w_data_pe)
+);
+
+procTop pT(
+.clk(clk),
+.rstn(rst),
+//PE interfaces
+.r_valid_pe(r_valid_pe),
+.r_data_pe(r_data_pe),
+.r_ready_pe(r_ready_pe),
+.w_valid_pe(w_valid_pe),
+.w_data_pe(w_data_pe),
+//PCIe interfaces
 .i_valid_pci(tb_i_valid_pci),
 .i_data_pci(o_data),
 .o_ready_pci(tb_o_ready_pci),
-
-///From scheduler to PCI///
-
 .o_data_pci(tb_o_data_pci),
 .o_valid_pci(tb_o_valid_pci),
 .i_ready_pci(tb_i_ready_pci)
 );
+
+
 
  
  

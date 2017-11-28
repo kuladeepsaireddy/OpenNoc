@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root MajorVersion="0" MinorVersion="33">
+  <CompositeFile CompositeFileTopName="system" CanBeSetAsTop="false" CanDisplayChildGraph="true">
+    <Description>Composite Fileset</Description>
+    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1511867244"/>
+    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1511867244"/>
+    <Generation Name="SIMULATION" State="STALE" Timestamp="1511867244"/>
+    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1511867244"/>
+    <FileCollection Name="SOURCES" Type="SOURCES">
+      <File Name="ip/system_imgProc_0_0/system_imgProc_0_0.xci" Type="IP">
+        <Instance HierarchyPath="imgProc_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/system_openNoc_0_0/system_openNoc_0_0.xci" Type="IP">
+        <Instance HierarchyPath="openNoc_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/system_dyract_0_0/system_dyract_0_0.xci" Type="IP">
+        <Instance HierarchyPath="dyract_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+    </FileCollection>
+  </CompositeFile>
+</Root>

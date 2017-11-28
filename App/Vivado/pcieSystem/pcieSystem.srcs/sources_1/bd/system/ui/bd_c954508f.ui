@@ -1,0 +1,34 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port sys_clk_p_0 -pg 1 -y 220 -defaultsOSRD
+preplace port heartbeat_0 -pg 1 -y 220 -defaultsOSRD
+preplace port pcie_link_status_0 -pg 1 -y 200 -defaultsOSRD
+preplace port sys_reset_n_0 -pg 1 -y 100 -defaultsOSRD
+preplace portBus pci_exp_rxn_0 -pg 1 -y 200 -defaultsOSRD
+preplace portBus pci_exp_rxp_0 -pg 1 -y 180 -defaultsOSRD
+preplace portBus pci_exp_txn_0 -pg 1 -y 160 -defaultsOSRD
+preplace portBus pci_exp_txp_0 -pg 1 -y 140 -defaultsOSRD
+preplace inst imgProc_0 -pg 1 -lvl 2 -y 110 -defaultsOSRD
+preplace inst dyract_0 -pg 1 -lvl 3 -y 170 -defaultsOSRD
+preplace inst openNoc_0 -pg 1 -lvl 1 -y 80 -defaultsOSRD
+preplace netloc dyract_0_pci_exp_txn 1 3 1 NJ
+preplace netloc imgProc_0_pciM 1 2 1 N
+preplace netloc dyract_0_Stream_Wr 1 1 3 250 30 NJ 30 820
+preplace netloc imgProc_0_imgRd 1 0 3 30 10 NJ 10 490
+preplace netloc dyract_0_pcie_link_status 1 3 1 NJ
+preplace netloc dyract_0_pci_exp_txp 1 3 1 NJ
+preplace netloc pci_exp_rxn_0_1 1 0 3 NJ 200 NJ 200 500J
+preplace netloc openNoc_0_peWrite 1 1 1 N
+preplace netloc dyract_0_o_axi_strm_clk 1 0 4 30 150 250 270 NJ 270 820
+preplace netloc pci_exp_rxp_0_1 1 0 3 NJ 180 260J 190 490J
+preplace netloc sys_reset_n_0_1 1 0 3 20 160 270 230 520J
+preplace netloc dyract_0_heartbeat 1 3 1 NJ
+preplace netloc sys_clk_p_0_1 1 0 3 NJ 220 NJ 220 510
+levelinfo -pg 1 0 140 380 670 840 -top 0 -bot 280
+",
+}
+{
+   da_clkrst_cnt: "1",
+}

@@ -86,12 +86,12 @@ proc update_MODELPARAM_VALUE.y_size { MODELPARAM_VALUE.y_size PARAM_VALUE.y_size
 proc update_MODELPARAM_VALUE.total_width { MODELPARAM_VALUE.total_width } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	# WARNING: There is no corresponding user parameter named "total_width". Setting updated value from the model parameter.
-set_property value 258 ${MODELPARAM_VALUE.total_width}
+set_property value 260 ${MODELPARAM_VALUE.total_width}
 }
 
 proc update_MODELPARAM_VALUE.sw_no { MODELPARAM_VALUE.sw_no } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	# WARNING: There is no corresponding user parameter named "sw_no". Setting updated value from the model parameter.
-set_property value 4 ${MODELPARAM_VALUE.sw_no}
+set_property value 16 ${MODELPARAM_VALUE.sw_no}
 }
 
