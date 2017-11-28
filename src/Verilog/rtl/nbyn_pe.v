@@ -1,15 +1,15 @@
 
 `include "include_file.v"
 module nbyn_pe_main(
-input wire clk,
-input wire rst,
+input wire      clk,
+input wire      rst,
 //from switch
 input wire [`total_width-1:0] i_data,
-input wire i_valid,
+input wire                    i_valid,
 //to switch
 output  [`total_width-1:0] o_data,
-output  o_valid,
-input wire i_ready,
+output wire                o_valid,
+input  wire                i_ready,
 //to from external world
 ////input wire [264:0] main_input,
 ////input wire main_valid_pe,
@@ -21,15 +21,15 @@ input wire i_ready,
 ////output reg o_valid_scheduler
 
 // PCI - Scheduler interface ////
-input i_valid_pci,
-input wire [`data_width-1:0] i_data_pci,
-output o_ready_pci,
+input              i_valid_pci,
+input wire [255:0] i_data_pci,
+output             o_ready_pci,
 
 ///From scheduler to PCI///
 
-output wire [`data_width-1:0] o_data_pci,
-output o_valid_pci,
-input  i_ready_pci
+output wire [255:0] o_data_pci,
+output              o_valid_pci,
+input               i_ready_pci
 );
 
 
@@ -100,9 +100,9 @@ scheduler_noc scheduler_inst(
 
 .clk(clk),
 // PCI - Scheduler interface ////
-.i_valid(i_valid_pci),
-.i_data(i_data_pci),
-.o_ready(o_ready_pci),
+.i_valid_pci(i_valid_pci),
+.i_data_pci(i_data_pci),
+.o_ready_pci(o_ready_pci),
 
 ///From scheduler to PCI///
 

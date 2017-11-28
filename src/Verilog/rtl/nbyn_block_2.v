@@ -1,6 +1,4 @@
-`include "include_file.v"
-
-module nbyn_block #(parameter x_coord='d0,parameter y_coord='d0)
+module nbyn_block #(parameter x_coord='d0,parameter y_coord='d0,X=2,Y=2,data_width=256, x_size=1, y_size=1,total_width=(x_size+y_size+data_width),sw_no=X*Y)
 (
 input wire clk,
 input wire i_ready_r,
@@ -11,15 +9,15 @@ output wire o_ready_l,
 output wire o_ready_b,
 output wire o_valid_r,
 output wire o_valid_t,
-input wire [`total_width-1:0] i_data_l,
-input wire [`total_width-1:0] i_data_b,
-output wire [`total_width-1:0] o_data_r,
-output wire [`total_width-1:0] o_data_t
+input wire [total_width-1:0] i_data_l,
+input wire [total_width-1:0] i_data_b,
+output wire [total_width-1:0] o_data_r,
+output wire [total_width-1:0] o_data_t
 
 
 );
-wire [`total_width-1:0] i_data_pe;
-wire [`total_width-1:0] o_data_pe;
+wire [total_width-1:0] i_data_pe;
+wire [total_width-1:0] o_data_pe;
 wire o_ready_pe;
 wire o_valid_pe;
 //wire i_ready_pe;

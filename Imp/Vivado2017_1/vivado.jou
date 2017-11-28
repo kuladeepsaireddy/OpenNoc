@@ -1,0 +1,152 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Mon Nov 27 19:53:52 2017
+# Process ID: 6588
+# Current directory: C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/Imp/Vivado2017_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent244 C:\Users\vipin.kizheppatt\OneDrive\Reserch\mygit\OpenNoc\Imp\Vivado2017_1\openNoc.xpr
+# Log file: C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/Imp/Vivado2017_1/vivado.log
+# Journal file: C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/Imp/Vivado2017_1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/Imp/Vivado2017_1/openNoc.xpr
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_block_2.v] -no_script -reset -force -quiet
+remove_files  C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_block_2.v
+export_ip_user_files -of_objects  [get_files C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_block.v] -no_script -reset -force -quiet
+remove_files  C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_block.v
+export_ip_user_files -of_objects  [get_files C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_pe_2.v] -no_script -reset -force -quiet
+remove_files  C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_pe_2.v
+export_ip_user_files -of_objects  [get_files C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_pe.v] -no_script -reset -force -quiet
+remove_files  C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_pe.v
+export_ip_user_files -of_objects  [get_files C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/myFifo/myFifo.xci] -no_script -reset -force -quiet
+remove_files  C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/myFifo/myFifo.xci
+export_ip_user_files -of_objects  [get_files C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_scheduler.v] -no_script -reset -force -quiet
+remove_files  C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_scheduler.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+set_property needs_refresh false [get_runs synth_1]
+open_run synth_1 -name synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+close_design
+open_run synth_1 -name synth_1
+config_webtalk -user on
+set_property STEPS.SYNTH_DESIGN.ARGS.FLATTEN_HIERARCHY none [get_runs synth_1]
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+close_design
+open_run synth_1 -name synth_1
+reset_run synth_1
+close_design
+ipx::package_project -root_dir C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc -vendor edu.kz -library user -taxonomy /UserIP -import_files -set_current false
+ipx::unload_core c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc/component.xml
+ipx::edit_ip_in_project -upgrade true -name tmp_edit_project -directory C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc/component.xml
+update_compile_order -fileset sources_1
+set_property vendor Kuladeep [ipx::current_core]
+close_project
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+export_ip_user_files -of_objects  [get_files C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/include_file.v] -no_script -reset -force -quiet
+remove_files  C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/include_file.v
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+reset_run synth_1
+close_design
+ipx::package_project -root_dir C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs -vendor edu.kz -library user -taxonomy /UserIP -import_files -set_current false
+ipx::unload_core c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/component.xml
+ipx::edit_ip_in_project -upgrade true -name tmp_edit_project -directory C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/component.xml
+update_compile_order -fileset sources_1
+set_property vendor Kuladeep [ipx::current_core]
+ipx::remove_user_parameter total_width [ipx::current_core]
+ipx::remove_user_parameter sw_no [ipx::current_core]
+close_project
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+ipx::package_project -root_dir C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc -vendor edu.kz -library user -taxonomy /UserIP -import_files -set_current false
+ipx::unload_core c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc/component.xml
+ipx::edit_ip_in_project -upgrade true -name tmp_edit_project -directory C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc/component.xml
+update_compile_order -fileset sources_1
+set_property vendor Kuladeep [ipx::current_core]
+set_property name openNoc [ipx::current_core]
+set_property display_name openNoc_v1_0 [ipx::current_core]
+set_property description openNoc_v1_0 [ipx::current_core]
+ipx::remove_user_parameter total_width [ipx::current_core]
+ipx::remove_user_parameter sw_no [ipx::current_core]
+close_project
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+ipx::package_project -root_dir C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc -vendor edu.kz -library user -taxonomy /UserIP -import_files -set_current false
+ipx::unload_core c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc/component.xml
+ipx::edit_ip_in_project -upgrade true -name tmp_edit_project -directory C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc/component.xml
+update_compile_order -fileset sources_1
+ipx::remove_user_parameter total_width [ipx::current_core]
+ipx::remove_user_parameter sw_no [ipx::current_core]
+set_property vendor Kuladeep [ipx::current_core]
+ipx::add_bus_interface peWrite [ipx::current_core]
+set_property abstraction_type_vlnv xilinx.com:interface:axis_rtl:1.0 [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]
+set_property bus_type_vlnv xilinx.com:interface:axis:1.0 [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]
+set_property interface_mode master [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]
+ipx::remove_bus_interface peWrite [ipx::current_core]
+current_project openNoc
+current_project tmp_edit_project
+close_project
+ipx::package_project -root_dir C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc -vendor edu.kz -library user -taxonomy /UserIP -import_files -set_current false
+ipx::unload_core c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc/component.xml
+ipx::edit_ip_in_project -upgrade true -name tmp_edit_project -directory C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc/component.xml
+update_compile_order -fileset sources_1
+set_property vendor Kuladeep [ipx::current_core]
+set_property name openNoc [ipx::current_core]
+set_property display_name openNoc_v1_0 [ipx::current_core]
+set_property description openNoc_v1_0 [ipx::current_core]
+ipx::remove_user_parameter total_width [ipx::current_core]
+ipx::remove_user_parameter sw_no [ipx::current_core]
+ipx::add_bus_interface peWrite [ipx::current_core]
+set_property abstraction_type_vlnv xilinx.com:interface:axis_rtl:1.0 [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]
+set_property bus_type_vlnv xilinx.com:interface:axis:1.0 [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]
+set_property interface_mode master [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]
+ipx::add_port_map TDATA [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]
+set_property physical_name w_data_pe [ipx::get_port_maps TDATA -of_objects [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]]
+ipx::add_port_map TVALID [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]
+set_property physical_name w_valid_pe [ipx::get_port_maps TVALID -of_objects [ipx::get_bus_interfaces peWrite -of_objects [ipx::current_core]]]
+ipx::add_bus_interface peRead [ipx::current_core]
+set_property abstraction_type_vlnv xilinx.com:interface:axis_rtl:1.0 [ipx::get_bus_interfaces peRead -of_objects [ipx::current_core]]
+set_property bus_type_vlnv xilinx.com:interface:axis:1.0 [ipx::get_bus_interfaces peRead -of_objects [ipx::current_core]]
+ipx::add_port_map TDATA [ipx::get_bus_interfaces peRead -of_objects [ipx::current_core]]
+set_property physical_name r_data_pe [ipx::get_port_maps TDATA -of_objects [ipx::get_bus_interfaces peRead -of_objects [ipx::current_core]]]
+ipx::add_port_map TVALID [ipx::get_bus_interfaces peRead -of_objects [ipx::current_core]]
+set_property physical_name r_valid_pe [ipx::get_port_maps TVALID -of_objects [ipx::get_bus_interfaces peRead -of_objects [ipx::current_core]]]
+ipx::add_port_map TREADY [ipx::get_bus_interfaces peRead -of_objects [ipx::current_core]]
+set_property physical_name r_ready_pe [ipx::get_port_maps TREADY -of_objects [ipx::get_bus_interfaces peRead -of_objects [ipx::current_core]]]
+ipx::add_bus_parameter ASSOCIATED_BUSIF [ipx::get_bus_interfaces clk -of_objects [ipx::current_core]]
+set_property value peWrite:peRead [ipx::get_bus_parameters ASSOCIATED_BUSIF -of_objects [ipx::get_bus_interfaces clk -of_objects [ipx::current_core]]]
+set_property previous_version_for_upgrade edu.kz:user:openNocTop:1.0 [ipx::current_core]
+set_property core_revision 1 [ipx::current_core]
+ipx::create_xgui_files [ipx::current_core]
+ipx::update_checksums [ipx::current_core]
+ipx::save_core [ipx::current_core]
+close_project -delete
+set_property  ip_repo_paths  c:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc [current_project]
+update_ip_catalog

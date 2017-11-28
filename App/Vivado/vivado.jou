@@ -1,0 +1,276 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Tue Nov 28 00:58:30 2017
+# Process ID: 9896
+# Current directory: C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/App/Vivado
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3596 C:\Users\vipin.kizheppatt\OneDrive\Reserch\mygit\OpenNoc\App\Vivado\openNoc.xpr
+# Log file: C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/App/Vivado/vivado.log
+# Journal file: C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/App/Vivado\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/App/Vivado/openNoc.xpr
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+export_ip_user_files -of_objects  [get_files C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_block_2.v] -no_script -reset -force -quiet
+remove_files  C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_block_2.v
+add_files -norecurse C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/procTop.v
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_block.v] -no_script -reset -force -quiet
+remove_files  C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/OpenNoc/src/Verilog/rtl/nbyn_block.v
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top procTop [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_simulation
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top procTop [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source procTop.tcl
+restart
+add_wave {{/procTop/\xs[0].ys[0].instnce.main_pe }} 
+add_wave {{/procTop/\xs[0].ys[0].instnce.main_pe /scheduler_inst}} 
+add_force {/procTop/clk} -radix hex {0 0ns} {1 5000ps} -repeat_every 10000ps
+add_force {/procTop/rstn} -radix hex {0 0ns}
+add_force {/procTop/i_valid_pci} -radix hex {0 0ns}
+remove_forces { {/procTop/i_valid_pci} }
+add_force {/procTop/o_valid_pci} -radix hex {0 0ns}
+add_force {/procTop/o_data_pci} -radix unsigned {00000 0ns}
+run 10 us
+add_force {/procTop/rstn} -radix hex {1 0ns}
+run 10 us
+run 10 ns
+restart
+add_force {/procTop/clk} -radix hex {0 0ns} {1 5000ps} -repeat_every 10000ps
+add_force {/procTop/rstn} -radix hex {0 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+add_force {/procTop/i_valid_pci} -radix hex {0 0ns}
+add_force {/procTop/i_data_pci} -radix hex {00000000000000000000000000000000000000000000000000000000000 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+add_force {/procTop/rstn} -radix hex {1 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+add_force {/procTop/i_ready_pci} -radix hex {0 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+add_force {/procTop/i_data_pci} -radix hex {FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 0ns}
+add_force {/procTop/i_valid_pci} -radix hex {1 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+relaunch_sim
+restart
+add_force {/procTop/clk} -radix hex {0 0ns} {1 5000ps} -repeat_every 10000ps
+add_force {/procTop/rstn} -radix hex {0 0ns}
+add_force {/procTop/i_valid_pci} -radix hex {0 0ns}
+add_force {/procTop/i_data_pci} -radix hex {000000000000000000000000000000000000000000000000000000000000000000000000 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+add_force {/procTop/i_ready_pci} -radix hex {1 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+add_force {/procTop/rstn} -radix hex {1 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+add_force {/procTop/i_data_pci} -radix hex {FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 0ns}
+add_force {/procTop/i_data_pci} -radix hex {FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 0ns}
+add_force {/procTop/i_data_pci} -radix unsigned {255 0ns}
+run 10 ns
+run 10 ns
+add_force {/procTop/i_valid_pci} -radix hex {1 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run all
+add_force {/procTop/r_ready_pe} -radix hex {FFFF 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run all
+add_wave {{/procTop/\xs[0].ys[0].instnce.main_pe /fifo}} 
+run all
+restart
+add_force {/procTop/clk} -radix hex {0 0ns} {1 5000ps} -repeat_every 10000ps
+add_force {/procTop/rstn} -radix hex {0 0ns}
+add_force {/procTop/i_valid_pci} -radix hex {0 0ns}
+add_force {/procTop/i_data_pci} -radix unsigned {0 0ns}
+add_force {/procTop/i_ready_pci} -radix hex {1 0ns}
+run 10 ns
+run 10 ns
+run 100 ns
+add_force {/procTop/w_valid_pe} -radix hex {FFFF 0ns}
+add_force {/procTop/r_ready_pe} -radix hex {FFFF 0ns}
+add_force {/procTop/w_data_pe} -radix unsigned {0 0ns}
+run all
+add_force {/procTop/w_valid_pe} -radix hex {0000 0ns}
+run 100 ns
+run 100 ns
+run 100 ns
+add_force {/procTop/rstn} -radix hex {1 0ns}
+run 100 ns
+run 100 ns
+add_force {/procTop/i_valid_pci} -radix hex {1 0ns}
+add_force {/procTop/i_data_pci} -radix unsigned {255 0ns}
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+run all
+run all
+add_force {/procTop/r_ready_pe} -radix hex {0000 0ns}
+run all
+add_force {/procTop/r_ready_pe} -radix hex {ffff 0ns}
+run all
+close_sim
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1

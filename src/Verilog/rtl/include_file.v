@@ -1,9 +1,9 @@
 `define X 4
 `define Y 4
-`define data_width 256
-`define total_width `x_size+`y_size+`pck_num+`data_width
+`define x_size 2
+`define y_size 2
 `define sw_no `X*`Y  //number of swithces 
-`define x_size $clog2(`X)
-`define y_size $clog2(`Y)
-`define pck_num $clog2(`sw_no)
+`define pck_num 4
+`define data_width (256-`pck_num)
 `define iter `data_width/8
+`define total_width (`x_size+`y_size+`pck_num+`data_width)

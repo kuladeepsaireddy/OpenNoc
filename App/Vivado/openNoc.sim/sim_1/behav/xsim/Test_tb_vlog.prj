@@ -1,12 +1,6 @@
 # compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "../../../../../../src/Verilog/rtl" --include "../../../../openNoc.ip_user_files/ipstatic/hdl" \
-"../../../../../../src/Verilog/rtl/ip/myFifo/sim/myFifo.v" \
-"../../../../../../src/Verilog/rtl/nbyn_block.v" \
-"../../../../../../src/Verilog/rtl/nbyn_block_2.v" \
+verilog xil_defaultlib  --include "../../../../../../src/Verilog/rtl" \
 "../../../../../../src/Verilog/rtl/nbyn_full.v" \
-"../../../../../../src/Verilog/rtl/nbyn_pe.v" \
-"../../../../../../src/Verilog/rtl/nbyn_pe_2.v" \
-"../../../../../../src/Verilog/rtl/nbyn_scheduler.v" \
 "../../../../../../src/Verilog/rtl/nbyn_switch.v" \
 "../../../../../../src/Verilog/tb/nbyn_tb.v" \
 
