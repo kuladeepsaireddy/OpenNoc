@@ -138,11 +138,11 @@ begin
 		o_data_t <= i_data_pe;
 		o_valid_t <= 1'b1;
 	end
-	/*else if(leftToPe & bottomToPe)
+	else if(leftToPe & bottomToPe & peToRight)////
 	begin
-		o_data_t <= i_data_b;
+		o_data_t <= i_data_l;
 		o_valid_t <= 1'b1;
-	end*/
+	end
 	else if(leftToRight & peToRight)
 	begin
 		o_data_t <= i_data_pe;

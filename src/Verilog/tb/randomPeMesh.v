@@ -1,5 +1,7 @@
 //`include "include_file.v"
 
+`timescale 1ns/1ps
+
 module randomPeTop  #(parameter X=2,Y=2,data_width=256, x_size=1, y_size=1,numPackets=100,total_width = (x_size+y_size+data_width),rate=1)
 (
 input  wire clk,
@@ -10,7 +12,9 @@ output wire [(total_width*X*Y)-1:0] r_data_pe,
 input  wire [(X*Y)-1:0]              r_ready_pe,
 input wire [(X*Y)-1:0]               w_valid_pe,
 input wire [(total_width*X*Y)-1:0]  w_data_pe,
-output wire done
+output wire done,
+input wire  start,
+input wire [(X*Y)-1:0] enableSend
 );
 
 wire [(X*Y)-1:0] pedone;
@@ -29,7 +33,9 @@ generate
 			.o_data(r_data_pe[(total_width*x)+(total_width*X*y)+:total_width]),
 			.o_valid(r_valid_pe[x+X*y]),
 			.done(pedone[(y*X)+x]),
-			.i_ready(r_ready_pe[x+X*y])
+			.i_ready(r_ready_pe[x+X*y]),
+			.start(start),
+			.enableSend(enableSend[(y*X)+x])
 			);
 		end
 	end			
