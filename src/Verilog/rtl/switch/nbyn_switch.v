@@ -10,7 +10,7 @@ input wire i_valid_b,
 input wire i_valid_pe,
 output wire o_ready_l,
 output wire o_ready_b,
-output wire  o_ready_pe,
+output reg  o_ready_pe,
 output reg o_valid_r,
 output reg o_valid_t,
 output reg o_valid_pe,
@@ -22,161 +22,195 @@ output reg [total_width-1:0] o_data_t,
 output reg [total_width-1:0] o_data_pe
 
 );
+wire leftToPe;
+wire bottomToPe;
+wire peTope;
+wire leftToRight;
+wire leftToTop;
+wire bottomToRight;
+wire bottomToTop;
+wire peToTop;
+wire peToRight;
+
 assign  o_ready_l = 1'b1;
 assign  o_ready_b = 1'b1;
 
+assign leftToPe = ((i_data_l[x_size-1:0]==x_coord) & (i_data_l[x_size+y_size-1:x_size]==y_coord) & i_valid_l) ? 1'b1 : 1'b0;
+assign leftToRight = ((i_data_l[x_size-1:0]!=x_coord) & i_valid_l) ? 1'b1 : 1'b0;
+assign leftToTop = (~leftToRight & (i_data_l[x_size+y_size-1:x_size]!=y_coord) & i_valid_l) ? 1'b1 : 1'b0;
 
-assign o_ready_pe = !(i_valid_b & i_valid_l);
+assign bottomToPe = ((i_data_b[x_size-1:0]==x_coord) & (i_data_b[x_size+y_size-1:x_size]==y_coord) & i_valid_b) ? 1'b1 : 1'b0;
+assign bottomToTop = (~bottomToRight & (i_data_b[x_size+y_size-1:x_size]!=y_coord ) & i_valid_b) ? 1'b1 : 1'b0;
+assign bottomToRight = ((i_data_b[x_size-1:0]!=x_coord) & i_valid_b) ? 1'b1 : 1'b0;
+
+assign peTope = ((i_data_pe[x_size-1:0]==x_coord) & (i_data_pe[x_size+y_size-1:x_size]==y_coord) & i_valid_pe) ? 1'b1 : 1'b0;
+assign peToRight = ((i_data_pe[x_size-1:0]!=x_coord) & i_valid_pe & o_ready_pe) ? 1'b1 : 1'b0;
+assign peToTop = (~peToRight & (i_data_pe[x_size+y_size-1:x_size]!=y_coord) & i_valid_pe & o_ready_pe) ? 1'b1 : 1'b0;
 
 
-always @(posedge clk)
+always @(*)
 begin
-    if(!rstn)
-        o_valid_r <=1'b0;
-    else if(i_ready_r & i_valid_l & i_data_l[x_size-1:0]!=x_coord)     
-	 begin
-        o_data_r <=i_data_l;
-		  o_valid_r <=1'b1;
-	 end
-	 else if(i_ready_r & i_valid_b & i_data_b[x_size-1:0]!=x_coord)
-	 begin
-        o_data_r <=i_data_b;
-		  o_valid_r <=1'b1;
-	 end
-     else if(i_ready_t & i_valid_b & i_data_b[x_size-1:0]!=x_coord & i_ready_r & i_valid_l & i_data_l[x_size-1:0]!=x_coord)// both going to right     
-	 begin
-        o_data_r <=i_data_l;
-		  o_valid_r <=1'b1;	
-     end		  
-	 else if(i_ready_t & i_valid_b & i_data_b[x_size-1:0]==x_coord & i_ready_r & i_valid_l & i_data_l[x_size-1:0]==x_coord & i_data_b[x_size+y_size-1:x_size]!=y_coord & i_data_l[x_size+y_size-1:x_size]!=y_coord) //both going to top
-	 begin
-	     o_data_r <=i_data_b;
-		  o_valid_r <=1'b1;
-	 end
-    
-	 else if(i_ready_r & i_valid_l & i_data_l[x_size-1:0]==x_coord & i_valid_b & i_data_b[x_size-1:0]==x_coord & i_data_b[x_size+y_size-1:x_size]==y_coord & i_data_l[x_size+y_size-1:x_size]==y_coord)//both going to pe
-	 begin
-          o_data_r<=i_data_b;
-          o_valid_r<=1'b1;		  
-	 end
-	 else if(i_ready_t & i_valid_b & i_data_b[x_size-1:0]!=x_coord & i_ready_r & i_valid_pe & i_data_pe[x_size-1:0]!=x_coord)////// pe and bottom going to right
-	 begin
-	    o_data_r<=i_data_b;
-		o_valid_r<=1'b1;
-	 end
-    else if(i_ready_t & i_valid_l & i_data_l[x_size-1:0]!=x_coord & i_ready_r & i_valid_pe & i_data_pe[x_size-1:0]!=x_coord)//////pe and left going to right
-	 begin
-	    o_data_r<=i_data_l;
-		o_valid_r<=1'b1;
-	 end
-   else if(o_ready_pe & i_valid_pe & i_data_pe[x_size-1:0]!=x_coord)
-    begin
-          o_data_r <=i_data_pe;
-		    o_valid_r <=1'b1;
-	 end
-    else if(i_ready_t & i_valid_l & i_data_l[x_size-1:0]==x_coord & i_data_l[x_size+y_size-1:x_size]!=y_coord & i_ready_r & i_valid_pe & i_data_pe[x_size-1:0]==x_coord & i_data_pe[x_size+y_size-1:x_size]!=y_coord)////// left and pe going to top
-	 begin
-	    o_data_r<=i_data_pe;
-		o_valid_r<=1'b1;
-	 end
-    else if(i_ready_t & i_valid_b & i_data_b[x_size-1:0]==x_coord & i_data_b[x_size+y_size-1:x_size]!=y_coord & i_ready_r & i_valid_pe & i_data_pe[x_size-1:0]==x_coord & i_data_pe[x_size+y_size-1:x_size]!=y_coord)//////bottom and pe going to top
-	 begin
-	    o_data_r<=i_data_pe;
-		o_valid_r<=1'b1;
-	 end
-	 else
-	    o_valid_r <=1'b0;
+	//If there are no packets to either right or top, we can accept data from PE
+	//If packets have to be sent to both out ports, will have to back pressure the PE
+	if((~leftToRight & ~leftToTop) | (~bottomToTop & ~bottomToRight))
+	begin
+		o_ready_pe = 1'b1;
+	end
+	else
+	begin
+		o_ready_pe = 1'b0;
+	end
 end
 
 always @(posedge clk)
 begin
-    if(!rstn)
-        o_valid_t <= 1'b0;
-    else if(i_ready_t & i_valid_b & i_data_b[x_size-1:0]!=x_coord & i_ready_r & i_valid_l & i_data_l[x_size-1:0]!=x_coord)// both going to right     
-	 begin
-        o_data_t <=i_data_b;
-		  o_valid_t <=1'b1;
-	 end
-	 else if(i_ready_t & i_valid_b & i_data_b[x_size-1:0]==x_coord & i_ready_r & i_valid_l & i_data_l[x_size-1:0]==x_coord & i_data_b[x_size+y_size-1:x_size]!=y_coord & i_data_l[x_size+y_size-1:x_size]!=y_coord)//both going to top
-	 begin
-        o_data_t <=i_data_l;
-		  o_valid_t <=1'b1;
-	 end	 
-	 else if(i_ready_t & i_valid_l & i_data_l[x_size-1:0]==x_coord & i_data_l[x_size+y_size-1:x_size] != y_coord)
-	 begin
-	     o_data_t <=i_data_l;
-		  o_valid_t <=1'b1;
-	 end
-    else if(i_ready_t & i_valid_b & i_data_b[x_size-1:0]==x_coord & i_data_b[x_size+y_size-1:x_size] != y_coord)
-    begin
-          o_data_t <=i_data_b;
-		    o_valid_t <=1'b1;
-	 end
-  
-    else if(i_ready_t & i_valid_l & i_data_l[x_size-1:0]==x_coord & i_data_l[x_size+y_size-1:x_size]!=y_coord & i_ready_r & i_valid_pe & i_data_pe[x_size-1:0]==x_coord & i_data_pe[x_size+y_size-1:x_size]!=y_coord)//left and pe going to top
-	 begin
-	    o_data_t<=i_data_l;
-		o_valid_t<=1'b1;
-	 end
-    else if(i_ready_t & i_valid_b & i_data_b[x_size-1:0]==x_coord & i_data_b[x_size+y_size-1:x_size]!=y_coord & i_ready_r & i_valid_pe & i_data_pe[x_size-1:0]==x_coord & i_data_pe[x_size+y_size-1:x_size]!=y_coord)//bottom and pe going to top
-	 begin
-	    o_data_t<=i_data_b;
-		o_valid_t<=1'b1;
-	 end
-   	else if(o_ready_pe & i_valid_pe & i_data_pe[x_size-1:0]==x_coord )
-    begin
-          o_data_t <=i_data_pe;
-		    o_valid_t <=1'b1;
-	 end
-	else if(i_ready_t & i_valid_b & i_data_b[x_size-1:0]!=x_coord & i_ready_r & i_valid_pe & i_data_pe[x_size-1:0]!=x_coord)///bottom and pe going to right
-	  begin
-	    o_data_t<=i_data_pe;
-		o_valid_t<=1'b1;
-	  end
-    else if(i_ready_t & i_valid_l & i_data_l[x_size-1:0]!=x_coord & i_ready_r & i_valid_pe & i_data_pe[x_size-1:0]!=x_coord)// left and pe going to right 
-	 begin
-	    o_data_t<=i_data_pe;
-		o_valid_t<=1'b1;
-	 end	 
-	 else
-	      o_valid_t <=1'b0;
+	if(!rstn)
+		o_valid_r <=1'b0;
+	//Whenever data from left wants to go right, it will be given preference
+	else if(leftToRight)   
+	begin
+		o_data_r  <= i_data_l;
+		o_valid_r <= 1'b1;
+	end
+	else if(bottomToRight) 
+	begin
+		o_data_r  <= i_data_b;
+		o_valid_r <= 1'b1;
+	end
+	else if(peToRight)
+	begin
+		o_data_r <=i_data_pe;
+		o_valid_r <=1'b1;
+	end
+	else if(bottomToTop & leftToTop)
+	begin
+		o_data_r  <= i_data_l;
+		o_valid_r <= 1'b1;
+	end
+	else if(leftToPe & bottomToPe)
+	begin
+		o_data_r  <= i_data_l;
+		o_valid_r <= 1'b1;
+	end
+	else if(leftToTop & peToTop)
+	begin
+		o_data_r <= i_data_l;
+		o_valid_r <= 1'b1;
+	end
+	else if(leftToPe & peTope)
+	begin
+		o_data_r <= i_data_l;
+		o_valid_r <= 1'b1;
+	end
+	else if(bottomToTop & peToTop)
+	begin
+		o_data_r <= i_data_pe;
+		o_valid_r <= 1'b1;
+	end
+	/*else if(bottomToPe & peTope)
+	begin
+		o_data_r <= i_data_b;
+		o_valid_r <= 1'b1;
+	end*/
+	else
+	begin
+		//o_data_r <= {total_width{1'bx}};
+		o_valid_r <=1'b0;
+	end
 end
-
-
-
-/*
-always @(posedge clk)
-begin
-     if(i_valid_b & i_valid_l)
-	      o_ready_pe <= 1'b0;
-	  else
-	      o_ready_pe <= 1'b1;
-end
-*/
 
 always @(posedge clk)
 begin
-    if(!rstn)
-        o_valid_pe <= 1'b0; 	
-	else if(i_valid_l & i_data_l[x_size-1:0]==x_coord & i_data_l[x_size+y_size-1:x_size] == y_coord  )
-	  begin
-	       o_data_pe <=i_data_l;
-		    o_valid_pe <=1'b1;
-      end
-	  
-	 else if(i_valid_b & i_data_b[x_size-1:0]==x_coord & i_data_b[x_size+y_size-1:x_size] == y_coord)
-	  begin
-	       o_data_pe <=i_data_b;
-		    o_valid_pe <=1'b1;
-     end
+	if(!rstn)
+		o_valid_t <= 1'b0;
+	else if(bottomToTop)// both going to right     
+	begin
+		o_data_t <=i_data_b;
+		o_valid_t <=1'b1;
+	end
+	else if(leftToTop)
+	begin
+		o_data_t <= i_data_l;
+		o_valid_t <= 1'b1;
+	end
+	else if(peToTop)
+	begin
+		o_data_t <= i_data_pe;
+		o_valid_t <= 1'b1;
+	end
+	/*else if(leftToPe & bottomToPe)
+	begin
+		o_data_t <= i_data_b;
+		o_valid_t <= 1'b1;
+	end*/
+	else if(leftToRight & peToRight)
+	begin
+		o_data_t <= i_data_pe;
+		o_valid_t <= 1'b1;
+	end
+	else if(bottomToPe & peTope)
+	begin
+		o_data_t <= i_data_b;
+		o_valid_t <= 1'b1;
+	end
+	else if(bottomToRight & peToRight)
+	begin
+		o_data_t <= i_data_pe;
+		o_valid_t <= 1'b1;
+	end
+	/*else if(leftToPe & peTope)
+	begin
+		o_data_t <= i_data_l;
+		o_valid_t <= 1'b1;
+	end*/
+	else if(leftToRight & bottomToRight)
+	begin
+		o_data_t <= i_data_b;
+		o_valid_t <= 1'b1;
+	end
+	else
+	begin
+		o_valid_t <= 1'b0;
+	end
+end
 
-	 else if(i_ready_r & i_valid_l & i_data_l[x_size-1:0]==x_coord & i_ready_t & i_valid_b & i_data_b[x_size-1:0]==x_coord & i_data_b[x_size+y_size-1:x_size]==y_coord & i_data_l[x_size+y_size-1:x_size]==y_coord)//both going to pe 
-	 begin
-          o_data_pe<=i_data_l;
-          o_valid_pe<=1'b1;		  
-	 end
-	  else
-	       o_valid_pe <=1'b0;
+always @(posedge clk)
+begin
+	if(!rstn)
+		o_valid_pe <= 1'b0; 
+		
+	else if(peTope)
+	begin
+		o_data_pe <= i_data_pe;
+		o_valid_pe <=1'b1;
+	end
+	/*else if(leftToPe & bottomToPe & peToRight)
+	begin
+		o_data_pe <= i_data_l;
+		o_valid_pe <= 1'b1;
+	end
+	else if(leftToPe & bottomToPe & peToTop)
+	begin
+		o_data_pe <= i_data_b;
+		o_valid_pe <= 1'b1;
+	end*/
+	else if(leftToPe & bottomToPe)
+	begin
+		o_data_pe <= i_data_b;
+		o_valid_pe <= 1'b1;
+	end
+	else if(leftToPe)
+	begin
+		o_data_pe <= i_data_l;
+		o_valid_pe <= 1'b1;
+	end
+	else if(bottomToPe)
+	begin
+		o_data_pe <= i_data_b;
+		o_valid_pe <= 1'b1;
+	end
+	else
+		o_valid_pe <=1'b0;
 end
 
 
