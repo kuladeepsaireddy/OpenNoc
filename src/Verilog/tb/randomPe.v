@@ -1,4 +1,4 @@
-module randomPe #(parameter xcord=0, ycord=0,data_width=240, X=4,Y=4, dest_x=2, dest_y=2,source_x=8,source_y=8,total_width=(dest_x+dest_y+source_x+source_y+data_width),num_of_pckts=3,rate=1,pat="MixedNeighbour")
+module randomPe #(parameter xcord=0, ycord=0,data_width=240, X=4,Y=4, dest_x=2, dest_y=2,source_x=8,source_y=8,total_width=(dest_x+dest_y+source_x+source_y+data_width),num_of_pckts=3,rate=1,pat="RANDOM")
 (
 input wire clk,
 input wire rstn,
@@ -59,8 +59,8 @@ begin
 	valid<=1'b1;
 	if(pat=="RANDOM")
 	begin
-	  	dest_x_addr = $urandom%X;
-	  	dest_y_addr = $urandom%Y;
+	  	dest_x_addr = $random%X;
+	  	dest_y_addr = $random%Y;
 	end
 	  	
     else if(pat == "SELF")

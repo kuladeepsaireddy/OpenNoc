@@ -1,12 +1,12 @@
 //`include "include_file.v"
 
-`define X 2
-`define Y 2
-`define x_size 1
-`define y_size 1
+`define X 4
+`define Y 4
+`define x_size 2
+`define y_size 2
 `define data_width 256
 `define total_width (`x_size+`y_size+`data_width)
-`define numPackets 5000
+`define numPackets 10000
 `define injectRate 1
 
 `define clkPeriod 2
@@ -41,7 +41,7 @@ begin
     rst = 0;
     #10;
     rst = 1;
-    enableSend = 'b1111;
+    enableSend = 'hFFFF;
     start = 1'b1;
 	startTime = $time;
 end

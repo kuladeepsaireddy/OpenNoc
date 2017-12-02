@@ -1,4 +1,4 @@
-module nbyn #(parameter x_coord ='d0,parameter y_coord='d0,X=2,Y=2,data_width=256, x_size=1, y_size=1,total_width=(x_size+y_size+data_width),sw_no=X*Y) //parameter pck_no=16'd0)
+module nbyn #(parameter x_coord ='d0,parameter y_coord='d0,X=2,Y=2,data_width=32, x_size=1, y_size=1,total_width=(x_size+y_size+data_width),sw_no=X*Y) //parameter pck_no=16'd0)
 (
 input wire clk,
 input wire rstn,
@@ -35,17 +35,17 @@ wire peToRight;
 assign  o_ready_l = 1'b1;
 assign  o_ready_b = 1'b1;
 
-assign leftToPe = ((i_data_l[x_size-1:0]==x_coord) & (i_data_l[x_size+y_size-1:x_size]==y_coord) & i_valid_l) ? 1'b1 : 1'b0;
-assign leftToRight = ((i_data_l[x_size-1:0]!=x_coord) & i_valid_l) ? 1'b1 : 1'b0;
-assign leftToTop = (~leftToRight & (i_data_l[x_size+y_size-1:x_size]!=y_coord) & i_valid_l) ? 1'b1 : 1'b0;
+assign leftToPe = ((i_data_l[x_size-1:0]==x_coord) & (i_data_l[x_size+y_size-1:x_size]==y_coord) & i_valid_l);
+assign leftToRight = ((i_data_l[x_size-1:0]!=x_coord) & i_valid_l);
+assign leftToTop = (~leftToRight & (i_data_l[x_size+y_size-1:x_size]!=y_coord) & i_valid_l);
 
-assign bottomToPe = ((i_data_b[x_size-1:0]==x_coord) & (i_data_b[x_size+y_size-1:x_size]==y_coord) & i_valid_b) ? 1'b1 : 1'b0;
-assign bottomToTop = (~bottomToRight & (i_data_b[x_size+y_size-1:x_size]!=y_coord ) & i_valid_b) ? 1'b1 : 1'b0;
-assign bottomToRight = ((i_data_b[x_size-1:0]!=x_coord) & i_valid_b) ? 1'b1 : 1'b0;
+assign bottomToPe = ((i_data_b[x_size-1:0]==x_coord) & (i_data_b[x_size+y_size-1:x_size]==y_coord) & i_valid_b);
+assign bottomToTop = (~bottomToRight & (i_data_b[x_size+y_size-1:x_size]!=y_coord ) & i_valid_b);
+assign bottomToRight = ((i_data_b[x_size-1:0]!=x_coord) & i_valid_b);// ? 1'b1 : 1'b0;
 
-assign peTope = ((i_data_pe[x_size-1:0]==x_coord) & (i_data_pe[x_size+y_size-1:x_size]==y_coord) & i_valid_pe) ? 1'b1 : 1'b0;
-assign peToRight = ((i_data_pe[x_size-1:0]!=x_coord) & i_valid_pe & o_ready_pe) ? 1'b1 : 1'b0;
-assign peToTop = (~peToRight & (i_data_pe[x_size+y_size-1:x_size]!=y_coord) & i_valid_pe & o_ready_pe) ? 1'b1 : 1'b0;
+assign peTope = ((i_data_pe[x_size-1:0]==x_coord) & (i_data_pe[x_size+y_size-1:x_size]==y_coord) & i_valid_pe & o_ready_pe);
+assign peToRight = ((i_data_pe[x_size-1:0]!=x_coord) & i_valid_pe & o_ready_pe);
+assign peToTop = (~peToRight & (i_data_pe[x_size+y_size-1:x_size]!=y_coord) & i_valid_pe & o_ready_pe);
 
 
 always @(*)
@@ -87,14 +87,19 @@ begin
 		o_data_r  <= i_data_l;
 		o_valid_r <= 1'b1;
 	end
-	else if(leftToPe & bottomToPe)
+	else if(bottomToTop & peToTop)
 	begin
-		o_data_r  <= i_data_l;
+		o_data_r <= i_data_pe;
 		o_valid_r <= 1'b1;
 	end
 	else if(leftToTop & peToTop)
 	begin
-		o_data_r <= i_data_l;
+		o_data_r <= i_data_pe;
+		o_valid_r <= 1'b1;
+	end
+	else if(leftToPe & bottomToPe)
+	begin
+		o_data_r  <= i_data_l;
 		o_valid_r <= 1'b1;
 	end
 	else if(leftToPe & peTope)
@@ -102,19 +107,13 @@ begin
 		o_data_r <= i_data_l;
 		o_valid_r <= 1'b1;
 	end
-	else if(bottomToTop & peToTop)
+	else if(peTope & bottomToPe & leftToTop)
 	begin
-		o_data_r <= i_data_pe;
+		o_data_r <= i_data_l;
 		o_valid_r <= 1'b1;
 	end
-	/*else if(bottomToPe & peTope)
-	begin
-		o_data_r <= i_data_b;
-		o_valid_r <= 1'b1;
-	end*/
 	else
 	begin
-		//o_data_r <= {total_width{1'bx}};
 		o_valid_r <=1'b0;
 	end
 end
@@ -123,7 +122,70 @@ always @(posedge clk)
 begin
 	if(!rstn)
 		o_valid_t <= 1'b0;
-	else if(bottomToTop)// both going to right     
+	else if(leftToRight)   
+	begin
+		if(bottomToRight|bottomToTop)
+		begin
+			o_data_t <= i_data_b;
+			o_valid_t <= 1'b1;
+		end
+		else if(peToRight|peToTop)
+		begin
+			o_data_t <= i_data_pe;
+			o_valid_t <= 1'b1;
+		end
+		else if(bottomToPe & peTope)
+		begin
+			o_data_t <= i_data_b;
+			o_valid_t <= 1'b1;
+		end
+		else
+		begin
+			o_valid_t <= 1'b0;
+			o_data_t <= i_data_b;
+		end
+	end
+	else if(bottomToRight) 
+	begin
+		if(peToRight|peToTop)
+		begin
+			o_data_t <= i_data_pe;
+			o_valid_t <= 1'b1;
+		end
+		else if(leftToTop)
+		begin
+			o_data_t <= i_data_l;
+			o_valid_t <= 1'b1;
+		end
+		else if(leftToPe & peTope)
+		begin
+			o_data_t <= i_data_l;
+			o_valid_t <= 1'b1;
+		end
+		else
+			o_valid_t <= 1'b0;
+	end
+	else if(leftToPe & bottomToPe)
+	begin
+		if(peToRight|peToTop)
+		begin
+			o_data_t <= i_data_pe;
+			o_valid_t <= 1'b1;
+		end
+		else if(peTope)
+		begin
+			o_data_t <= bottomToPe;
+			o_valid_t <= 1'b1;
+		end
+		else
+			o_valid_t <= 1'b0;
+	end
+	else if(bottomToPe & peTope)
+	begin
+		o_data_t <= i_data_b;
+		o_valid_t <= 1'b1;
+	end
+	else if(bottomToTop)
 	begin
 		o_data_t <=i_data_b;
 		o_valid_t <=1'b1;
@@ -138,40 +200,8 @@ begin
 		o_data_t <= i_data_pe;
 		o_valid_t <= 1'b1;
 	end
-	else if(leftToPe & bottomToPe & peToRight)////
-	begin
-		o_data_t <= i_data_l;
-		o_valid_t <= 1'b1;
-	end
-	else if(leftToRight & peToRight)
-	begin
-		o_data_t <= i_data_pe;
-		o_valid_t <= 1'b1;
-	end
-	else if(bottomToPe & peTope)
-	begin
-		o_data_t <= i_data_b;
-		o_valid_t <= 1'b1;
-	end
-	else if(bottomToRight & peToRight)
-	begin
-		o_data_t <= i_data_pe;
-		o_valid_t <= 1'b1;
-	end
-	/*else if(leftToPe & peTope)
-	begin
-		o_data_t <= i_data_l;
-		o_valid_t <= 1'b1;
-	end*/
-	else if(leftToRight & bottomToRight)
-	begin
-		o_data_t <= i_data_b;
-		o_valid_t <= 1'b1;
-	end
 	else
-	begin
 		o_valid_t <= 1'b0;
-	end
 end
 
 always @(posedge clk)
@@ -184,16 +214,6 @@ begin
 		o_data_pe <= i_data_pe;
 		o_valid_pe <=1'b1;
 	end
-	/*else if(leftToPe & bottomToPe & peToRight)
-	begin
-		o_data_pe <= i_data_l;
-		o_valid_pe <= 1'b1;
-	end
-	else if(leftToPe & bottomToPe & peToTop)
-	begin
-		o_data_pe <= i_data_b;
-		o_valid_pe <= 1'b1;
-	end*/
 	else if(leftToPe & bottomToPe)
 	begin
 		o_data_pe <= i_data_b;
