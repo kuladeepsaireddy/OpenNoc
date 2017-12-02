@@ -66,6 +66,21 @@ begin
  
 end*/
 
+integer sentCounter=0;
+integer receiveCounter=0;
+
+always@(posedge clk)
+begin
+    if(o_valid)
+        sentCounter <= sentCounter + 1;
+end
+
+always @(posedge clk)
+begin
+    if(i_valid)
+        receiveCounter <= receiveCounter + 1;
+end
+
 always @(posedge clk )//or posedge reset)
 begin	
 		if(i_valid)

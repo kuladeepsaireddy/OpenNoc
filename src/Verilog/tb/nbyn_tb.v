@@ -1,12 +1,14 @@
 `include "include_file.v"
 
+`timescale 1ns/1ps
+
 `define headerSize 1078
 `define imageSize 262144
 `timescale 1ns/1ps
 
 module Test_tb();
 reg  clk;
-reg  [7:0] o_data;
+reg  [255:0] o_data;
 //reg  [7:0] o_data;
 wire [7:0] tb_o_data_pci;
 wire tb_o_ready_pci ;
@@ -106,7 +108,7 @@ always@(posedge clk)
   if(tb_o_ready_pci & !sendDone)
    begin
         rtn = $fscanf(file,"%c",image_data);
-        o_data<=image_data;
+        o_data<={248'd0,image_data};
 	  tb_i_valid_pci<=1'b1;
      if($feof(file))
        begin
@@ -151,7 +153,8 @@ wire [(`X*`Y)-1:0] r_ready_pe;
 wire [(`X*`Y)-1:0] w_valid_pe;
 wire [(`total_width*`X*`Y)-1:0] w_data_pe;
 
-openNocTop ON
+openNocTop #(.X(`X),.Y(`Y),.data_width(`data_width), .x_size(`x_size), .y_size(`y_size))
+ON
 (
 .clk(clk),
 .rstn(rst),

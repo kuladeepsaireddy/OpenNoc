@@ -167,7 +167,12 @@ begin
 	end
 	else if(leftToPe & bottomToPe)
 	begin
-		if(peToRight|peToTop)
+		if(peToRight)
+		begin
+			o_data_t <= i_data_l;
+			o_valid_t <= 1'b1;
+		end
+		else if(peToTop)
 		begin
 			o_data_t <= i_data_pe;
 			o_valid_t <= 1'b1;

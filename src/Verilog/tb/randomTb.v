@@ -1,12 +1,12 @@
 //`include "include_file.v"
 
-`define X 4
-`define Y 4
-`define x_size 2
-`define y_size 2
+`define X 2
+`define Y 1
+`define x_size 1
+`define y_size 1
 `define data_width 256
 `define total_width (`x_size+`y_size+`data_width)
-`define numPackets 10000
+`define numPackets 1000
 `define injectRate 1
 
 `define clkPeriod 2
