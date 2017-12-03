@@ -22,3 +22,13 @@
 *_xmsgs/
 *iseconfig
 *xst
+*.xmsgs
+*.bld
+*.ngd
+*.map
+*.mrp
+*_ngo
+*.cmd
+*isim
+*.ini
+*xdb
