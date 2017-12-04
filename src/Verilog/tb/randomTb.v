@@ -1,9 +1,9 @@
 //`include "include_file.v"
 
 `define X 2
-`define Y 1
-`define x_size 1
-`define y_size 1
+`define Y 2
+`define x_size $clog2(`X)
+`define y_size $clog2(`Y)
 `define data_width 256
 `define total_width (`x_size+`y_size+`data_width)
 `define numPackets 1000
@@ -41,7 +41,7 @@ begin
     rst = 0;
     #10;
     rst = 1;
-    enableSend = 'hFFFF;
+    enableSend = {(`X*`Y){1'b1}};
     start = 1'b1;
 	startTime = $time;
 end
@@ -60,7 +60,7 @@ ON
 .w_data_pe(w_data_pe)
 );
 
-randomPeTop #(.X(`X),.Y(`Y),.data_width(`data_width), .x_size(`x_size),.y_size(`y_size),.numPackets(`numPackets),.rate(`injectRate)) 
+randomPeTop #(.X(`X),.Y(`Y),.data_width(`data_width), .x_size(`x_size),.y_size(`y_size),.numPackets(`numPackets),.rate(`injectRate),.pat("RANDOM")) 
 rPeT(
 .clk(clk),
 .rstn(rst),
@@ -85,10 +85,13 @@ initial
 begin
     wait(!done);
 	wait(done & noReadOp & noWriteOp);
-	$display("Simulation finished at",,,,$time);
-	$display("Max Throughput:\t %f packets/cycle",(`X*`Y*1.0/`injectRate));
+	//$display("Simulation finished at",,,,$time);
+	$display("------------------------------------------------------------");
+	$display("NoC configuration:\t\t %0dx%0d",`X,`Y);
+	$display("Max Throughput:\t\t\t %f packets/cycle",(`X*`Y*1.0/`injectRate));
 	$display("Achieved Throughput:\t %f packets/cycle",(`numPackets*`X*`Y*1.0)/(($time-startTime)/`clkPeriod));
-	$display("Efficiency:\t %f",((`numPackets*`X*`Y*100.0)/(($time-startTime)/`clkPeriod))/(`X*`Y*1.0/`injectRate));
+	$display("Efficiency:\t\t\t\t %f",((`numPackets*`X*`Y*100.0)/(($time-startTime)/`clkPeriod))/(`X*`Y*1.0/`injectRate));
+	$display("------------------------------------------------------------");
 	start = 0;
 	#500;
 	$stop;

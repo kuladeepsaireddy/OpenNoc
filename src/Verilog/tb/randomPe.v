@@ -1,4 +1,4 @@
-module randomPe #(parameter xcord=0, ycord=0,data_width=240, X=4,Y=4, dest_x=2, dest_y=2,source_x=8,source_y=8,total_width=(dest_x+dest_y+source_x+source_y+data_width),num_of_pckts=3,rate=1,pat="RANDOM")
+module randomPe #(parameter xcord=0, ycord=0,data_width=240, X=4,Y=4, dest_x=2, dest_y=2,source_x=8,source_y=8,total_width=(dest_x+dest_y+source_x+source_y+data_width),num_of_pckts=3,rate=1,pat="MixedNeighbour")
 (
 input wire clk,
 input wire rstn,
@@ -59,8 +59,8 @@ begin
 	valid<=1'b1;
 	if(pat=="RANDOM")
 	begin
-	  	dest_x_addr = $random%X;
-	  	dest_y_addr = $random%Y;
+	  	dest_x_addr = $urandom_range(0,X-1);
+	  	dest_y_addr = $urandom_range(0,Y-1);
 	end
 	  	
     else if(pat == "SELF")
@@ -148,20 +148,22 @@ initial
 begin
     @(negedge start);
     #100;
+    `ifdef DEBUG
     $display("PE No:\t%d",ycord*X+xcord);
     $display("Total Packets Transmitted:\t%d",accept_counter);
     $display("Total Packets Received :\t%d",in_data_count);
 
-    for(i=0;i<X*Y;i=i+1)
-    begin
-        $display("Tranmitted from %4d to %4d: %4d",ycord*X+xcord,i,transmitCounters[i]); 
-    end
+        for(i=0;i<X*Y;i=i+1)
+        begin
+            $display("Tranmitted from %4d to %4d: %4d",ycord*X+xcord,i,transmitCounters[i]); 
+        end
 
 
-    for(i=0;i<X*Y;i=i+1)
-    begin
-        $display("Received from %4d to %4d: %4d",i,ycord*X+xcord,receiveCounters[i]); 
-    end
+        for(i=0;i<X*Y;i=i+1)
+        begin
+            $display("Received from %4d to %4d: %4d",i,ycord*X+xcord,receiveCounters[i]); 
+        end
+    `endif
 end
    
 endmodule

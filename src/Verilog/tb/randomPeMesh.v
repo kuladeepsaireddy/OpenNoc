@@ -2,7 +2,7 @@
 
 `timescale 1ns/1ps
 
-module randomPeTop  #(parameter X=2,Y=2,data_width=256, x_size=1, y_size=1,numPackets=100,total_width = (x_size+y_size+data_width),rate=1)
+module randomPeTop  #(parameter X=2,Y=2,data_width=256, x_size=1, y_size=1,numPackets=100,total_width = (x_size+y_size+data_width),rate=1,pat="RANDOM")
 (
 input  wire clk,
 input  wire rstn,
