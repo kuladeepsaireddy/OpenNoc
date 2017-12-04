@@ -219,19 +219,19 @@ begin
 		o_data_pe <= i_data_pe;
 		o_valid_pe <=1'b1;
 	end
-	else if(leftToPe & bottomToPe)
+	/*else if(leftToPe & bottomToPe)
 	begin
 		o_data_pe <= i_data_b;
 		o_valid_pe <= 1'b1;
-	end
+	end*/
+	else if(bottomToPe)
+    begin
+        o_data_pe <= i_data_b;
+        o_valid_pe <= 1'b1;
+    end
 	else if(leftToPe)
 	begin
 		o_data_pe <= i_data_l;
-		o_valid_pe <= 1'b1;
-	end
-	else if(bottomToPe)
-	begin
-		o_data_pe <= i_data_b;
 		o_valid_pe <= 1'b1;
 	end
 	else

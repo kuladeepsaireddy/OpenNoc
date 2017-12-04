@@ -1,3 +1,6 @@
+`timescale 1ns/1ps
+//`define DEBUG
+
 module randomPe #(parameter xcord=0, ycord=0,data_width=240, X=4,Y=4, dest_x=2, dest_y=2,source_x=8,source_y=8,total_width=(dest_x+dest_y+source_x+source_y+data_width),num_of_pckts=3,rate=1,pat="MixedNeighbour")
 (
 input wire clk,
@@ -10,7 +13,9 @@ output wire  done,
 input wire i_ready,
 
 input start,
-input enableSend
+input enableSend,
+
+output wire [31:0] receivedPktCount
 
 );
 
@@ -31,6 +36,8 @@ reg [31:0] receiveCounters [X*Y-1:0];
 
 integer seed = ycord*X+xcord;
 integer i;
+
+assign receivedPktCount = in_data_count;
 
 initial
 begin
