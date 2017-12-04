@@ -54,75 +54,81 @@ assign o_valid = valid&!done&enableSend;
 
 always @(posedge clk)
 begin
+    if(!rstn)
+        counter<=0;
+    else
+        counter <= counter + 1;
+end
+
+always @(posedge clk)
+begin
 	if(!rstn)
 	begin
-		counter <= 0;
 		dest_x_addr <= 0;
 		dest_y_addr<=0;
 		valid <= 0;
 	end
-   else if(check_reg==0 & !done)
-   begin
-	valid<=1'b1;
-	if(pat=="RANDOM")
-	begin
-	  	dest_x_addr = $urandom_range(0,X-1);
-	  	dest_y_addr = $urandom_range(0,Y-1);
-	end
+    else if(check_reg==0 & !done)
+    begin
+	   valid<=1'b1;
+	   if(pat=="RANDOM")
+	   begin
+	  	   dest_x_addr = $urandom()%X;
+	  	   dest_y_addr = $urandom()%Y;
+	   end
 	  	
-    else if(pat == "SELF")
-    begin
-	  	dest_x_addr = xcord;
-	  	dest_y_addr = ycord;
-	end
+       else if(pat == "SELF")
+       begin
+	       dest_x_addr = xcord;
+	       dest_y_addr = ycord;
+	   end
 	
-	else if(pat == "RightNeighbour")
-	begin
-	    if(xcord == X-1)
-	       dest_x_addr = 0;
-	    else
-	       dest_x_addr = xcord+1;
-	    dest_y_addr = ycord;  
-	end
+	   else if(pat == "RightNeighbour")
+	   begin
+	       if(xcord == X-1)
+	           dest_x_addr = 0;
+	       else
+	           dest_x_addr = xcord+1;
+	       dest_y_addr = ycord;  
+	   end
 	
-	else if(pat == "TopNeighbour")
-    begin
-        if(ycord == Y-1)
-           dest_y_addr = 0;
-        else
-           dest_y_addr = ycord+1;
-        dest_x_addr = xcord;  
-    end
-    
-    else if(pat == "MixedNeighbour")
-    begin
-        if($urandom(seed)%2 == 0) //randomly choose between top and right 0 to right 1 to top
-        begin
-            if(xcord == X-1)
-                dest_x_addr = 0;
-            else
-                dest_x_addr = xcord+1;
-            dest_y_addr = ycord; 
-        end
-        else
-        begin
+	   else if(pat == "TopNeighbour")
+       begin
             if(ycord == Y-1)
                 dest_y_addr = 0;
             else
                 dest_y_addr = ycord+1;
-            dest_x_addr = xcord; 
+            dest_x_addr = xcord;  
         end
-        seed = seed + $urandom();
-    end
-	o_data[dest_x-1:0]<=dest_x_addr;
-	o_data[dest_x+dest_y-1:dest_x]<=dest_y_addr;
-	o_data[dest_x+dest_y+source_x-1:dest_x+dest_y]<=xcord;
-	o_data[dest_x+dest_y+source_x+source_y-1:dest_x+dest_y+source_x]<=ycord;
-	o_data[dest_x+dest_y+source_x+source_y+data_width-1:dest_x+dest_y+source_x+source_y]<=counter;
-	counter<=counter+1;
-   end	
-   else if(done)
-	  valid<=0;
+    
+        else if(pat == "MixedNeighbour")
+        begin
+            if($urandom(seed)%2 == 0) //randomly choose between top and right 0 to right 1 to top
+            begin
+                if(xcord == X-1)
+                    dest_x_addr = 0;
+                else
+                    dest_x_addr = xcord+1;
+                dest_y_addr = ycord; 
+            end
+            else
+            begin
+                if(ycord == Y-1)
+                    dest_y_addr = 0;
+                else
+                    dest_y_addr = ycord+1;
+                dest_x_addr = xcord; 
+            end
+            seed = seed + $urandom();
+        end
+	    o_data[dest_x-1:0]<=dest_x_addr;
+	    o_data[dest_x+dest_y-1:dest_x]<=dest_y_addr;
+	    o_data[dest_x+dest_y+source_x-1:dest_x+dest_y]<=xcord;
+	    o_data[dest_x+dest_y+source_x+source_y-1:dest_x+dest_y+source_x]<=ycord;
+	    o_data[dest_x+dest_y+source_x+source_y+data_width-1:dest_x+dest_y+source_x+source_y]<=counter;
+     end	
+     else
+	     valid<=0;
  end 
 
 assign destinationPe = o_data[dest_x+dest_y-1:dest_x]*X + o_data[dest_x-1:0]; //PE number of destination
@@ -132,8 +138,8 @@ always@(posedge clk)
 begin
     if(i_ready & o_valid)  
     begin
-	 accept_counter<=accept_counter+1;
-	 transmitCounters[destinationPe] <= transmitCounters[destinationPe] + 1;
+	   accept_counter<=accept_counter+1;
+	   transmitCounters[destinationPe] <= transmitCounters[destinationPe] + 1;
     end
 end
  
@@ -142,14 +148,14 @@ end
  begin
     if(i_valid)
     begin
-	in_data_count<=in_data_count+1;
-	receiveCounters[sourcePe] <= receiveCounters[sourcePe] + 1;
+	   in_data_count<=in_data_count+1;
+	   receiveCounters[sourcePe] <= receiveCounters[sourcePe] + 1;
     end 
  end 
   
   
 
- assign done = (accept_counter==num_of_pckts)|(enableSend == 0) ? 1'b1 : 1'b0;
+ assign done = (accept_counter==num_of_pckts) ? 1'b1 : 1'b0;
 
 initial
 begin
