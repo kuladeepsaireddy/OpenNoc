@@ -1,13 +1,13 @@
 //`include "include_file.v"
 
-`define X 10
-`define Y 10
+`define X 3
+`define Y 5
 `define x_size $clog2(`X)
 `define y_size $clog2(`Y)
 `define data_width 256
 `define total_width (`x_size+`y_size+`data_width)
 `define numPackets 1000
-`define injectRate 2
+`define injectRate 1
 `define pattern "RANDOM"
 
 `define clkPeriod 2

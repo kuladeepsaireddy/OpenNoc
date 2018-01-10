@@ -1,5 +1,5 @@
-`define X 3
-`define Y 5
+`define X 5
+`define Y 3
 `define x_size $clog2(`X)
 `define y_size $clog2(`Y)
 `define sw_no 256//`X*`Y  //number of swithces 
