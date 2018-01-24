@@ -1,13 +1,13 @@
 //`include "include_file.v"
 
-`define X 3
-`define Y 5
+`define X 10
+`define Y 10
 `define x_size $clog2(`X)
 `define y_size $clog2(`Y)
 `define data_width 256
 `define total_width (`x_size+`y_size+`data_width)
 `define numPackets 1000
-`define injectRate 1
+`define injectRate 32
 `define pattern "RANDOM"
 
 `define clkPeriod 2
@@ -106,8 +106,8 @@ begin
 	$display("Total Packets transmitted:\t%0d",`X*`Y*`numPackets);
 	$display("Total Packets received:\t\t%0d",receivedPkts);
 	$display("NoC configuration:\t\t %0dx%0d",`X,`Y);
-	$display("Max Throughput:\t\t\t %f packets/cycle",(`X*`Y*1.0/`injectRate));
-	$display("Achieved Throughput:\t %f packets/cycle",(`numPackets*`X*`Y*1.0)/(($time-startTime)/`clkPeriod));
+	$display("Max Throughput:\t\t\t %f packets/cycle/pe",(1.0/`injectRate));
+	$display("Achieved Throughput:\t %f packets/cycle/pe",(`numPackets*1.0)/(($time-startTime)/`clkPeriod));
 	$display("Efficiency:\t\t\t\t %f",((`numPackets*`X*`Y*100.0)/(($time-startTime)/`clkPeriod))/(`X*`Y*1.0/`injectRate));
 	$display("------------------------------------------------------------");
 	start = 0;

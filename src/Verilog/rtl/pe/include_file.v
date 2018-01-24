@@ -1,7 +1,7 @@
-`define X 5
-`define Y 3
+`define X 2
+`define Y 1
 `define x_size $clog2(`X)
-`define y_size $clog2(`Y)
+`define y_size 1//$clog2(`Y)
 `define sw_no 256//`X*`Y  //number of swithces 
 `define pck_num 8
 `define data_width 256

@@ -1,4 +1,4 @@
-module openNocTop #(parameter X=4,Y=4,data_width=256, x_size=2, y_size=2,total_width=(x_size+y_size+data_width),sw_no=X*Y)
+module openNocTop #(parameter X=2,Y=2,data_width=32, x_size=1, y_size=1,total_width=(x_size+y_size+data_width),sw_no=X*Y)
 (
 input wire clk,
 input wire rstn,

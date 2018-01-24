@@ -71,7 +71,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN">system_dyract_0_0_o_axi_strm_clk</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN"/>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -196,7 +196,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.PEWRITE.CLK_DOMAIN">system_dyract_0_0_o_axi_strm_clk</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.PEWRITE.CLK_DOMAIN"/>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -338,7 +338,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.PEREAD.CLK_DOMAIN">system_dyract_0_0_o_axi_strm_clk</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.PEREAD.CLK_DOMAIN"/>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -493,12 +493,12 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>total_width</spirit:name>
         <spirit:displayName>Total Width</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.total_width" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.x_size&apos;)) + spirit:decode(id(&apos;MODELPARAM_VALUE.y_size&apos;))) + spirit:decode(id(&apos;MODELPARAM_VALUE.data_width&apos;)))">260</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="MODELPARAM_VALUE.total_width" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.x_size&apos;)) + spirit:decode(id(&apos;MODELPARAM_VALUE.y_size&apos;))) + spirit:decode(id(&apos;MODELPARAM_VALUE.data_width&apos;)))">260</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>sw_no</spirit:name>
         <spirit:displayName>Sw No</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.sw_no" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.X&apos;)) * spirit:decode(id(&apos;MODELPARAM_VALUE.Y&apos;)))">16</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="MODELPARAM_VALUE.sw_no" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.X&apos;)) * spirit:decode(id(&apos;MODELPARAM_VALUE.Y&apos;)))">16</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -544,15 +544,13 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>openNoc_v1_0</xilinx:displayName>
-      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:coreRevision>2</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="user.org:user:openNocTop:1.0_ARCHIVE_LOCATION">/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc</xilinx:tag>
         <xilinx:tag xilinx:name="Kuladeep:user:openNocTop:1.0_ARCHIVE_LOCATION">/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc</xilinx:tag>
         <xilinx:tag xilinx:name="Kuladeep:user:openNoc:1.0_ARCHIVE_LOCATION">/home/vipin/workspace/Research/mygit/OpenNoc/src/Verilog/VivadoIPs/openNoc</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEREAD.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEREAD.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEREAD.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEREAD.HAS_TREADY" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
@@ -561,7 +559,6 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEREAD.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEREAD.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEREAD.TUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEWRITE.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEWRITE.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEWRITE.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PEWRITE.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
@@ -575,9 +572,9 @@
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2017.3</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="6cac25d4"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="14ebab73"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="aaed65c8"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="ada03402"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="b4025482"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="daef9ae0"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="86113f1d"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>

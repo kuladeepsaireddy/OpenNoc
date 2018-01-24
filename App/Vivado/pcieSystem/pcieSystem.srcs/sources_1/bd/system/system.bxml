@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="33">
   <CompositeFile CompositeFileTopName="system" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1511867244"/>
-    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1511867244"/>
-    <Generation Name="SIMULATION" State="STALE" Timestamp="1511867244"/>
-    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1511867244"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1515566879"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1515566879"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1515566879"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1515566879"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip/system_imgProc_0_0/system_imgProc_0_0.xci" Type="IP">
         <Instance HierarchyPath="imgProc_0"/>
