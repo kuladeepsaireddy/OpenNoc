@@ -20,6 +20,7 @@ output wire [31:0] receivedPktCount
 );
 
 integer counter;
+wire [31:0] payload;
 integer accept_counter=0;
 wire check_reg;
 integer in_data_count=0;
@@ -38,9 +39,14 @@ integer seed = ycord*X+xcord;
 integer i;
 
 assign receivedPktCount = in_data_count;
+assign payload = i_data[dest_x+dest_y+source_x+source_y+data_width-1:dest_x+dest_y+source_x+source_y];
+
+integer               receive_log_file;
+reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
 
 initial
 begin
+    receive_log_file = $fopen(receive_log_file_name,"a");
     for(i=0;i<X*Y;i=i+1)
     begin
 	transmitCounters[i] = 0;
@@ -73,8 +79,9 @@ begin
 	   valid<=1'b1;
 	   if(pat=="RANDOM")
 	   begin
-	  	   dest_x_addr = $urandom()%X;
-	  	   dest_y_addr = $urandom()%Y;
+	  	   dest_x_addr = $urandom(seed)%X;
+	  	   dest_y_addr = $urandom(seed)%Y;
+           seed = seed + $urandom();
 	   end
 	  	
        else if(pat == "SELF")
@@ -150,6 +157,8 @@ end
     begin
 	   in_data_count<=in_data_count+1;
 	   receiveCounters[sourcePe] <= receiveCounters[sourcePe] + 1;
+       $fwrite(receive_log_file,"%0d,%0d,%0d,%0d,%0d,\n",sourcePe,ycord*X+xcord, payload, counter, counter-payload);
+       $fflush(receive_log_file);
     end 
  end 
   

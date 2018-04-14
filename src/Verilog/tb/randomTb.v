@@ -7,7 +7,7 @@
 `define data_width 256
 `define total_width (`x_size+`y_size+`data_width)
 `define numPackets 1000
-`define injectRate 32
+`define injectRate 1
 `define pattern "RANDOM"
 
 `define clkPeriod 2
@@ -28,6 +28,9 @@ integer startTime;
 reg  start;
 reg [(`X*`Y)-1:0] enableSend;
 
+integer               receive_log_file;
+reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
+
 initial
 begin
  clk = 1'b0;
@@ -40,6 +43,9 @@ end
 
 initial
 begin
+    receive_log_file = $fopen(receive_log_file_name,"w");
+    $fwrite(receive_log_file,"%s,%s,%s,%s,%s\n","Source PE","Destination PE","Inject Time","Receive Time","Latency(clock cycles)");
+    $fflush(receive_log_file);
     rst = 0;
     #10;
     rst = 1;
@@ -112,6 +118,8 @@ begin
 	$display("------------------------------------------------------------");
 	start = 0;
 	#500;
+    $fflush(receive_log_file);
+    $fclose(receive_log_file);
 	$stop;
 end
  
