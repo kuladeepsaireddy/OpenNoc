@@ -9,12 +9,12 @@ But running the NoC at high clock frequency, better throughput can be achieved.
 In addition to the NoC routing architecture, OpenNoc also supports a packetizer and PCIe-based host machine interface if the design is targeted for Virtex-7 690tffg1761-2 FPGA (the one present in VC709 evaluation board).
 It could be also supported on VC707 board by minor modifications to an IP core.
 
-### Prerequisites
+## Prerequisites
 
 The NoC portion can be synthesized or simulated using any FPGA sysnthesis and simulation tools (such as Xilinx ISE, Xilinx Vivado, Intel Quartus, ModelSim, NCSim, ICarus Verilog etc.)
 For implementing the packetizer and the host communication IP, users require Xilinx Vivado 2017.3 or above with a valid implementation license.
 
-### Directory structure 
+## Directory structure 
 
 **App**: Two example applications of OpenNoc IP using Xilinx Vivado Tool flow
 
@@ -32,4 +32,22 @@ For more details about Dyract IP core, please refer to [dyract][dyract]
 
 [dyract]: https://github.com/warclab/dyract 
 
+## Getting Started
+###1. Simulation
+For simulating the functionality of OpenNoc and to evaluate the performance (throughput), test-benches and processing element (PE) models are provided along with OpenNoc RTL source code.
+The top test-bench file is located at OpenNoc/src/Verilog/tb/randomTb.v
+The following parameters can be modified in the test-bench file for evaluating different configurations
 
+X --> Number of switches/PEs in the X direction
+
+Y --> Number of switches/PEs in the Y direction
+
+data_width --> Data bus width between the switch and the PE. The total bus width will be sum of data bus width and the bits required for address bits. It is calculated automatically
+
+numPackets --> Number of packets used for simulation. This is the number of packets injected by each PE. So the total number of packets injected will be this number multiplied by number of PEs (X*Y)
+
+injectRate --> The rate at which packets are injected. If this value is set to 1, PEs will try to inject one packet on every clock cycle. If this value is 2, they will try to inject 1 packet every two clock cycles and so on.
+
+pattern --> The test pattern. This value decides the destination address used by each PE when injecting packets to the NoC. The supported patterns are RANDOM, SELF, RightNeighbour, TopNeighbour and MixedNeighbour.
+
+ 
