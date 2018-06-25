@@ -17,7 +17,9 @@ For implementing the packetizer and the host communication IP, users require Xil
 ### Directory structure 
 
 **App**: Two example applications of OpenNoc IP using Xilinx Vivado Tool flow
+
 ImgProcess --> Interfacing OpenNoc with processing elements for image processing
+
 pcieSystem --> Interfacing OpenNoc to a host computer using Dyract IP core
 
 **data**: Directory where the testing image for image processing application is located.
