@@ -33,7 +33,9 @@ For more details about Dyract IP core, please refer to [dyract][dyract]
 [dyract]: https://github.com/warclab/dyract 
 
 ## Getting Started
+
 ###1. Simulation
+
 For simulating the functionality of OpenNoc and to evaluate the performance (throughput), test-benches and processing element (PE) models are provided along with OpenNoc RTL source code.
 The top test-bench file is located at OpenNoc/src/Verilog/tb/randomTb.v
 The following parameters can be modified in the test-bench file for evaluating different configurations
@@ -60,6 +62,7 @@ At the end of simultion, the throughput and efficiency of the NoC is displayed o
 The latency for each packet is available inside the Vivado project sim folder in csv format (called receive_log.csv)
 
 ###2. Implementation
+
 As discussed before, the two source files for OpenNoC torus is present in the OpenNoc/src/Verilog/VivadoIPs/openNoc/src.
 The top RTL file is openNocTop.v
 Users can customize the following parameters in this file for obtaining the NoC of their preferred configuration.
