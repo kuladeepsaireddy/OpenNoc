@@ -93,8 +93,8 @@ Note that there is no w_ready_pe. PEs are expected to have enough internal buffe
 
 The expected data packet follows the following format
 
-|----------------------|--------------|--------------|
-|________data__________|_y coordinate_|_x coordinate_|
+|----------------------|--------------|--------------|  
+|________data__________|_y coordinate_|_x coordinate_|  
 
 Once users have developed their own PE, they can interface it with openNocTop module.
 For example design please refer to OpenNoc/src/Verilog/tb/randomTb.v and OpenNoc/src/Verilog/tb/randomPeMesh.v files.
