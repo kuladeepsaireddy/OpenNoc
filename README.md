@@ -104,8 +104,32 @@ Once users have developed their own PE, they can interface it with openNocTop mo
 For example design please refer to OpenNoc/src/Verilog/tb/randomTb.v and OpenNoc/src/Verilog/tb/randomPeMesh.v files.
 Another example RTL PE is available at OpenNoc/src/Verilog/VivadoIPs/Inverter/src/nbyn_pe_2.v and procTop.v files.
 The sample PE is used for image processing.
-It subtracts each byte in the data field from 256 and sends back the processed pack to PE address zero.
-For this application the data field also contains a packet number field, which is preserved.
+
+### 3. Running a sample application with packetizer
+
+OpenNoC comes with an optional packetizer module, which converts received data over AXI4 stream interface into OpenNoC compatiable packet format and injects to the NoC.
+Similarly it streams back the data received from the NoC to the external world over an AXI4 stream interface.
+The external interface to OpenNoC could be coming from other communication controllers such as PCIe or Ethernet.
+The git repository has a complete example of using the packetizer to inject packets to the NoC and to receive back the processed data.
+The application inverts a gray scale image.
+
+The PE for image processing is located at OpenNoc/src/Verilog/VivadoIPs/Inverter/src/nbyn_pe_2.v.
+The input image for the sample application is located at OpenNoc/data/lena512.bmp.
+The testbench located at OpenNoc/src/Verilog/tb/nbyn_tb.v reads the image converts to AXI4 stream format and injects to the packetizer.
+The packetizer source code is located at OpenNoc/src/Verilog/VivadoIPs/Inverter/src/nbyn_scheduler.v.
+The packetizer automatically inserts packet number to each packet so that they can be reassembled later.
+This is required due to packet switching the NoC doesn't guarantee data will be returned in the same order they are sent back from the PEs.
+The packetizer is assumed to be always connected as PE number 0 to the bottom left corner switch of the NoC.
+Users can see how image processing PEs and the packetizer are combined into a single module at OpenNoc/src/Verilog/VivadoIPs/Inverter/src/procTop.v
+From the PE source code you can see the address field is set to 0 so that the packets are sent back to the packetizer.
+
+To run the sample application, if using Vivado simulator open the project file OpenNoc/App/Vivado/ImgProcess/ImgProcess.xpr.
+All the required source files are present in the project.
+The data received from the packetizer is written into a bmp file by the testbench.
+Run the top testbench and the output file will available at OpenNoc/data/outputLena.bmp.
+If using other simulators, add the following files for simulation: nbyn_switch.v, openNocTop.v, include_file.v, nbyn_pe.v, nbyn_pe_2.v, nbyn_scheduler.v, procTop.v and nbyn_tb.v.
+The location of the input image need to be then updated in the nbyn_tb.v file (line 32).
+
 
 If using Vivado software suite, OpenNoC is also available as an IP core.
 For using the IP in your design, include the directory OpenNoc/src/Verilog/VivadoIPs in the IP repository path.
