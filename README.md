@@ -80,15 +80,16 @@ The switch to PE interface confirms to AXI4 stream interface and user PEs should
 All the AXI4 stream interfaces from the switches are merged as a single AXI interface in openNocTop.v module.
 Following are the interface signals
 
-Signal          Direction       Description
+| Signal        | Direction| Description|
+| ------------- |:---------|:------|
+| clk           |  I       |AXI4 Stream synchronous clock signal |
+| rstn          |  I       |Synchronous active low signal |
+| r_valid_pe    |  I       |AXI4 read valid signal. The total width of the bus is X*Y and each signal corresponds to each switch. The index number of the signal corresponds to the switch/PE address |
+| r_data_pe     |  I       |AXI4 read data bus. The total width of the bus is X*Y*total_width. Where total_width is x_size+y_size+data_width|
+| r_ready_pe    |  O       |AXI4 read ready signal from switches |
+| w_valid_pe    |  O       |AXI4 write valid signal from switches |
+| w_data_pe     |  O       |AXI4 write data bus|
 
-clk                 I           AXI4 Stream synchronous clock signal
-rstn                I           Synchronous active low signal
-r_valid_pe          I           AXI4 read valid signal. The total width of the bus is X*Y and each signal corresponds to each switch. The index number of the signal corresponds to the switch/PE address
-r_data_pe           I           AXI4 read data bus. The total width of the bus is X*Y*total_width. Where total_width is x_size+y_size+data_width
-r_ready_pe          O           AXI4 read ready signal from switches
-w_valid_pe          O           AXI4 write valid signal from switches
-w_data_pe           O           AXI4 write data bus
 Note that there is no w_ready_pe. PEs are expected to have enough internal buffering for always accepting data received from switches.
 
 The expected data packet follows the following format
