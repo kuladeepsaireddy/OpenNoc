@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 20 18:52:25 2018" VIVADOVERSION="2017.3">
+
+  <SYSTEMINFO ARCH="virtex7" BOARD="xilinx.com:vc709:part0:1.8" DEVICE="7vx690t" NAME="system" PACKAGE="ffg1761" SPEEDGRADE="-2"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="I" LEFT="7" NAME="pci_exp_rxp_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pci_exp_rxp_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dyract_0" PORT="pci_exp_rxp"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="7" NAME="pci_exp_rxn_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pci_exp_rxn_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dyract_0" PORT="pci_exp_rxn"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="sys_reset_n_0" SIGIS="undef" SIGNAME="External_Ports_sys_reset_n_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="imgProc_0" PORT="rstn"/>
+        <CONNECTION INSTANCE="openNoc_0" PORT="rstn"/>
+        <CONNECTION INSTANCE="dyract_0" PORT="sys_reset_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="pci_exp_txp_0" RIGHT="0" SIGIS="undef" SIGNAME="dyract_0_pci_exp_txp">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dyract_0" PORT="pci_exp_txp"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="pci_exp_txn_0" RIGHT="0" SIGIS="undef" SIGNAME="dyract_0_pci_exp_txn">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dyract_0" PORT="pci_exp_txn"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="pcie_link_status_0" SIGIS="undef" SIGNAME="dyract_0_pcie_link_status">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dyract_0" PORT="pcie_link_status"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="heartbeat_0" SIGIS="undef" SIGNAME="dyract_0_heartbeat">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dyract_0" PORT="heartbeat"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clk_p_0" SIGIS="clk" SIGNAME="External_Ports_sys_clk_p_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dyract_0" PORT="sys_clk_p"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clk_n_0" SIGIS="clk" SIGNAME="External_Ports_sys_clk_n_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dyract_0" PORT="sys_clk_n"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE FULLNAME="/dyract_0" HWVERSION="1.0" INSTANCE="dyract_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dyract" VLNV="xilinx.com:user:dyract:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="RECONFIG_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_dyract_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="pci_exp_rxp" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pci_exp_rxp_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pci_exp_rxp_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="pci_exp_rxn" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pci_exp_rxn_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pci_exp_rxn_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="pci_exp_txp" RIGHT="0" SIGIS="undef" SIGNAME="dyract_0_pci_exp_txp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pci_exp_txp_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="pci_exp_txn" RIGHT="0" SIGIS="undef" SIGNAME="dyract_0_pci_exp_txn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pci_exp_txn_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clk_p" SIGIS="clk" SIGNAME="External_Ports_sys_clk_p_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sys_clk_p_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clk_n" SIGIS="clk" SIGNAME="External_Ports_sys_clk_n_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sys_clk_n_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sys_reset_n" SIGIS="undef" SIGNAME="External_Ports_sys_reset_n_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sys_reset_n_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_wr_data_valid" SIGIS="undef" SIGNAME="dyract_0_o_wr_data_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="i_valid_pci"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_wr_data_ready" SIGIS="undef" SIGNAME="dyract_0_i_wr_data_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="o_ready_pci"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="255" NAME="o_wr_data" RIGHT="0" SIGIS="undef" SIGNAME="dyract_0_o_wr_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="i_data_pci"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_rd_data_valid" SIGIS="undef" SIGNAME="dyract_0_i_rd_data_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="o_valid_pci"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_rd_data_ready" SIGIS="undef" SIGNAME="dyract_0_o_rd_data_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="i_ready_pci"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="255" NAME="i_rd_data" RIGHT="0" SIGIS="undef" SIGNAME="dyract_0_i_rd_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="o_data_pci"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="o_axi_strm_clk" SIGIS="clk" SIGNAME="dyract_0_o_axi_strm_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="openNoc_0" PORT="clk"/>
+            <CONNECTION INSTANCE="imgProc_0" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pcie_link_status" SIGIS="undef" SIGNAME="dyract_0_pcie_link_status">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pcie_link_status_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="heartbeat" SIGIS="undef" SIGNAME="dyract_0_heartbeat">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="heartbeat_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="dyract_0_Stream_Wr" NAME="Stream_Wr" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="32"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_dyract_0_1_o_axi_strm_clk"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="o_wr_data"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="o_wr_data_valid"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="i_wr_data_ready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="imgProc_0_pciM" NAME="Stream_Rd" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="32"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_dyract_0_1_o_axi_strm_clk"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="i_rd_data"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="i_rd_data_valid"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="o_rd_data_ready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE FULLNAME="/imgProc_0" HWVERSION="1.0" INSTANCE="imgProc_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="imgProc" VLNV="Kuladeep:user:imgProc:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="system_imgProc_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="dyract_0_o_axi_strm_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dyract_0" PORT="o_axi_strm_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rstn" SIGIS="rst" SIGNAME="External_Ports_sys_reset_n_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sys_reset_n_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="r_valid_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_r_valid_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="openNoc_0" PORT="r_valid_pe"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4159" NAME="r_data_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_r_data_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="openNoc_0" PORT="r_data_pe"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="r_ready_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_r_ready_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="openNoc_0" PORT="r_ready_pe"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="w_valid_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_w_valid_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="openNoc_0" PORT="w_valid_pe"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4159" NAME="w_data_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_w_data_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="openNoc_0" PORT="w_data_pe"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_valid_pci" SIGIS="undef" SIGNAME="dyract_0_o_wr_data_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dyract_0" PORT="o_wr_data_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="255" NAME="i_data_pci" RIGHT="0" SIGIS="undef" SIGNAME="dyract_0_o_wr_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dyract_0" PORT="o_wr_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_ready_pci" SIGIS="undef" SIGNAME="dyract_0_i_wr_data_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dyract_0" PORT="i_wr_data_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="255" NAME="o_data_pci" RIGHT="0" SIGIS="undef" SIGNAME="dyract_0_i_rd_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dyract_0" PORT="i_rd_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_valid_pci" SIGIS="undef" SIGNAME="dyract_0_i_rd_data_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dyract_0" PORT="i_rd_data_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_ready_pci" SIGIS="undef" SIGNAME="dyract_0_o_rd_data_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dyract_0" PORT="o_rd_data_ready"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="openNoc_0_peWrite" NAME="imgWr" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="520"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_dyract_0_1_o_axi_strm_clk"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="w_valid_pe"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="w_data_pe"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="imgProc_0_imgRd" NAME="imgRd" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="520"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_dyract_0_1_o_axi_strm_clk"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="r_valid_pe"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="r_ready_pe"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="r_data_pe"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="imgProc_0_pciM" NAME="pciM" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="32"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_dyract_0_1_o_axi_strm_clk"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="o_valid_pci"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="o_data_pci"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="i_ready_pci"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="dyract_0_Stream_Wr" NAME="pciS" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="32"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_dyract_0_1_o_axi_strm_clk"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="i_valid_pci"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="o_ready_pci"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="i_data_pci"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE FULLNAME="/openNoc_0" HWVERSION="1.0" INSTANCE="openNoc_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="openNoc" VLNV="Kuladeep:user:openNoc:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="X" VALUE="4"/>
+        <PARAMETER NAME="Y" VALUE="4"/>
+        <PARAMETER NAME="data_width" VALUE="256"/>
+        <PARAMETER NAME="x_size" VALUE="2"/>
+        <PARAMETER NAME="y_size" VALUE="2"/>
+        <PARAMETER NAME="total_width" VALUE="260"/>
+        <PARAMETER NAME="sw_no" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_openNoc_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="dyract_0_o_axi_strm_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dyract_0" PORT="o_axi_strm_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rstn" SIGIS="rst" SIGNAME="External_Ports_sys_reset_n_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sys_reset_n_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="r_valid_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_r_valid_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="r_valid_pe"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4159" NAME="r_data_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_r_data_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="r_data_pe"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="r_ready_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_r_ready_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="r_ready_pe"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="w_valid_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_w_valid_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="w_valid_pe"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4159" NAME="w_data_pe" RIGHT="0" SIGIS="undef" SIGNAME="imgProc_0_w_data_pe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="imgProc_0" PORT="w_data_pe"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="openNoc_0_peWrite" NAME="peWrite" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="520"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_dyract_0_1_o_axi_strm_clk"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="w_valid_pe"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="w_data_pe"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="imgProc_0_imgRd" NAME="peRead" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="520"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_dyract_0_1_o_axi_strm_clk"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="r_valid_pe"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="r_ready_pe"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="r_data_pe"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>

@@ -1,0 +1,1 @@
+set_property LOC IBUFDS_GTE2_X1Y11 [get_cells pcie/refclk_ibuf]
