@@ -1,0 +1,175 @@
+/* =========================================================================
+ * 
+ * CONNECT - CONfigurable NEtwork Creation Tool
+ * Copyright (c) 2012 by Michael K. Papamichael, Carnegie Mellon University
+ * 
+ * =========================================================================
+ */
+
+///////////////////////////////////
+//-------- General info -----------
+
+CONNECT is a flexible RTL generator for fast, FPGA-friendly Networks-on-Chip.
+This website serves as a front-end to CONNECT's network generation engine, which
+is primarily based on Bluespec System Verilog. All networks generated through
+CONNECT consist of fully synthesizable Verilog.
+
+CONNECT supports a variety of common network topologies, as well as custom
+user-specified networks. A variety of network and router parameters, such as
+router type, pipelining options, the number of virtual channels or allocator type, 
+allow the user to further customize the network and trade-off between resource 
+usage and performance.
+
+For license information please see the LICENSE file.
+
+//////////////////////////////////////////////////
+//-------- Using the generated network -----------
+
+All necessary files to implement a working network are located in this
+directory.  For networks with credit-based flow control the top module is
+called "mkNetwork" and is located in the mkNetwork.v file. For networks with
+peek flow control the top module is called mkNetworkSimple and is located in
+the mkNetworkSimple.v file. Both the mkNetwork and mkNetworkSimple module
+interfaces consist of a set of ports used for sending and receiving flits and
+flow control information.  
+
+The credit-based and peek-based networks share the same interface for sending and
+receiving flits, but offer different flow-control interfaces, which are detailed
+below. 
+
+//////////////////////////////////////////////////////////////////////////////////
+//-------- Data Send/Receive interface (mkNetwork and mkNetworkSimple) -----------
+
+The mkNetwork credit-based interface consists of the following set of wires and buses for each port <P>:
+ 
+  ===================================
+  ==== Send Port Wires and Buses ====
+  ===================================
+
+  - EN_send_ports_<P>_putFlit input wire: Assert when sending a flit to indicate 
+    send_ports_P_putFlit_flit_in carries valid data.
+  - send_ports_<P>_putFlit_flit_in input bus, with the following fields:
+    
+    MSB                                                                  LSB
+    ------------------------------------------------------------------------
+    | <valid bit> | <is_tail> | <destination> | <virtual channel> | <data> |
+    ------------------------------------------------------------------------
+
+    Field Info:
+      <valid bit>       : Indicates a valid flit. Set to 1 when sending a flit.
+      <is_tail>         : Indicates this is a tail flit, i.e. the last flit of a packet. Should be
+                          set to 1 for single-flit packets as they are also tail flits.
+      <destination>     : Specifies the destination of the current flit. Populate with a valid 
+                          binary encoded router ID that corresponds to one of the routers in the network.
+      <virtual channel> : For VC-based networks this field specifies the virtual channel to use and should be 
+                          populated with a valid VC, depending on the number of available virtual channels. 
+                          Lower VCs are prioritized over higher VCs. Networks that do not employ virtual 
+                          channels (Virtual-Output-Queued and Input-Queued) essentially behave as if they only
+                          had a single virtual channel. As a result, for non-VC networks this field is 1-bit 
+                          wide and should be set to 0.
+      <data>            : User data field. Populate with data to be transfered.
+ 
+ 
+  //-------- Credit-based Flow Control Interface (mkNetwork) -----------
+  - EN_send_ports_<P>_getCredits input wire: indicates sender is ready to receive a credit.
+  - send_ports_<P>_getCredits, output bus, with the following fields:
+    
+    MSB                             LSB
+    -----------------------------------
+    | <valid bit> | <virtual channel> |
+    -----------------------------------
+
+    Field Info:
+      <valid bit>       : Indicates a valid credit.
+      <virtual channel> : Indicates the virtual channel that the incoming credit is for. For non-VC networks 
+                          (VOQ and IQ) this field is 1-bit wide and should be set to 0.
+
+  //-------- Peek-based Flow Control Interface (mkNetworkSimple) -----------
+  - EN_send_ports_<P>_getNonFullVCs input wire: indicates sender is ready to receive a credit.
+  - send_ports_<P>_getNonFullVCs, output bus, that carries a bitmask indicating which VCs have available buffers space
+    (i.e. are non Full). MSB corresponds to the highest VC and LSB corresponds to the lowest VC. For non-VC networks
+    this signal is a single bit.
+
+
+  ======================================
+  ==== Receive Port Wires and Buses ====
+  ======================================
+  
+  - EN_recv_ports_P_getFlit input wire: Assert when ready to receive an incoming flit.
+  - recv_ports_P_getFlit output bus, with the following fields: 
+
+    MSB                                                                  LSB
+    ------------------------------------------------------------------------
+    | <valid bit> | <is_tail> | <destination> | <virtual channel> | <data> |
+    ------------------------------------------------------------------------
+
+    Field Info:
+      <valid bit>       : Indicates a valid flit. Check to see if received flit is valid.
+      <is_tail>         : Indicates this is a tail flit, i.e. the last flit of a packet. Should be
+                          set to 1 for single-flit packets as they are also tail flits.
+      <destination>     : Specifies the destination of the received flit.
+      <virtual channel> : Specifies the virtual channel of the received flit. Ignore for non-VC networks
+      <data>            : User data field. Contains the transferred data.
+
+  //-------- Credit-based Flow Control Interface (mkNetwork) -----------
+  - EN_recv_ports_P_putCredits input wire: indicates receiver is sending a credit. Assert when sending a credit.
+  - recv_ports_P_putCredits_cr_in, input bus, with the following fields:
+     
+    MSB                             LSB
+    -----------------------------------
+    | <valid bit> | <virtual channel> |
+    -----------------------------------
+
+    Field Info:
+      <valid bit>       : Indicates a valid credit.
+      <virtual channel> : Indicates the virtual channel that the outgoing credit is for.
+
+  //-------- Peek-based Flow Control Interface (mkNetworkSimple) -----------
+  - EN_recv_ports_<P>_putNonFullVCs input wire: indicates sender is ready to receive a credit.
+  - recv_ports_<P>_putNonFullVCs, input bus, which is a bitmask indicating which VCs have available buffers space
+    (i.e. are non Full). MSB corresponds to the highest VC and LSB corresponds to the lowest VC. For non-VC networks
+    this signal is a single bit.
+
+
+  ======================================================
+  ==== Credit-based Flow Control - Credit Handling  ====
+  ======================================================
+  
+  For CONNECT-generated networks that use credit-based flow control network clients 
+  need to maintain and exchange flow control information (i.e. credits) with the 
+  routers they are connected to. 
+
+  - Outgoing traffic (sending flits as a client)
+  Each client needs to maintain credit counters (one per VC) and a client
+  should only send a flit into the network if the corresponding credit counter
+  for the particular VC is non-zero. Credit counters should be initialized
+  according to the selected Flit Buffer Depth (e.g. for a Flit Buffer Depth of 7,
+  credit counters would need to be initialized to the value 7 after reset). Once
+  the flit is injected into the network the client needs to decrement the number
+  of available credits for the particular VC to keep track of remaining credits. 
+
+  - Incoming traffic (receiving flits as a client)
+  Each client needs to maintain incoming flit buffers (one per VC) to store the
+  flits it receives. These flit buffers need to be sized according to the
+  selected Flit Buffer Depth (e.g. for a Flit Buffer depth of 7, the depth of
+  the incoming flit buffers should be at least 7 entries deep). Each time the 
+  client dequeues a flit from one of its incoming flit buffers, it needs to send 
+  a credit for the corresponding VC to inform the router about the newly
+  available space. Routers initially assume that they have enough credits to
+  fill the client's incoming flit buffers.
+
+  Note that if client is guaranteed to instantly consume every incoming flit,
+  then it does not need to maintain incoming flit buffers; however it still has
+  to provide a credit to the router for each incoming flit.
+
+
+  ============================
+  ==== Peek Flow Control  ====
+  ============================
+ 
+  CONNECT-generated networks that use Peek flow control offer a simpler interface. 
+  Instead of maintaing and exchanging credits, network clients simply need to 
+  check if the buffer they intend to inject into is not full by checking the
+  send_ports_<P>_getNonFullVCs signal. In the case of VC-based networks they need to 
+  check the specific bit that corresponds to the VC that the flit belongs to.
+
