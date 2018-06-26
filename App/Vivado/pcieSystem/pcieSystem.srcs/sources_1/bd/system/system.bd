@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0xDD0575F3377E20F4" bd:device="xc7vx690tffg1761-2" bd:synthFlowMode="Hierarchical" bd:tool_version="2017.3" bd:top="system" bd:version="1.00.a">
+<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0x9C6B2E76AFF4E4AA" bd:device="xc7vx690tffg1761-2" bd:isValidated="true" bd:synthFlowMode="Hierarchical" bd:tool_version="2017.3" bd:top="system" bd:version="1.00.a">
 
   <spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
     <spirit:vendor>xilinx.com</spirit:vendor>
@@ -30,7 +30,82 @@
             </spirit:physicalPort>
           </spirit:portMap>
         </spirit:portMaps>
-        <spirit:parameters/>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>FREQ_HZ</spirit:name>
+            <spirit:value>100000000</spirit:value>
+            <spirit:vendorExtensions>
+              <bd:configElementInfos>
+                <bd:configElementInfo bd:valueSource="default"/>
+              </bd:configElementInfos>
+            </spirit:vendorExtensions>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>PHASE</spirit:name>
+            <spirit:value>0.000</spirit:value>
+            <spirit:vendorExtensions>
+              <bd:configElementInfos>
+                <bd:configElementInfo bd:valueSource="default"/>
+              </bd:configElementInfos>
+            </spirit:vendorExtensions>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>CLK_DOMAIN</spirit:name>
+            <spirit:value>system_sys_clk_p_0</spirit:value>
+            <spirit:vendorExtensions>
+              <bd:configElementInfos>
+                <bd:configElementInfo bd:valueSource="user"/>
+              </bd:configElementInfos>
+            </spirit:vendorExtensions>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:busInterface>
+      <spirit:busInterface>
+        <spirit:name>CLK.SYS_CLK_N_0</spirit:name>
+        <spirit:displayName>Clk</spirit:displayName>
+        <spirit:description>Clock</spirit:description>
+        <spirit:busType spirit:library="signal" spirit:name="clock" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:abstractionType spirit:library="signal" spirit:name="clock_rtl" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:slave/>
+        <spirit:portMaps>
+          <spirit:portMap>
+            <spirit:logicalPort>
+              <spirit:name>CLK</spirit:name>
+            </spirit:logicalPort>
+            <spirit:physicalPort>
+              <spirit:name>sys_clk_n_0</spirit:name>
+            </spirit:physicalPort>
+          </spirit:portMap>
+        </spirit:portMaps>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>FREQ_HZ</spirit:name>
+            <spirit:value>100000000</spirit:value>
+            <spirit:vendorExtensions>
+              <bd:configElementInfos>
+                <bd:configElementInfo bd:valueSource="default"/>
+              </bd:configElementInfos>
+            </spirit:vendorExtensions>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>PHASE</spirit:name>
+            <spirit:value>0.000</spirit:value>
+            <spirit:vendorExtensions>
+              <bd:configElementInfos>
+                <bd:configElementInfo bd:valueSource="default"/>
+              </bd:configElementInfos>
+            </spirit:vendorExtensions>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>CLK_DOMAIN</spirit:name>
+            <spirit:value>system_sys_clk_p_0</spirit:value>
+            <spirit:vendorExtensions>
+              <bd:configElementInfos>
+                <bd:configElementInfo bd:valueSource="user"/>
+              </bd:configElementInfos>
+            </spirit:vendorExtensions>
+          </spirit:parameter>
+        </spirit:parameters>
       </spirit:busInterface>
     </spirit:busInterfaces>
     <spirit:model>
@@ -60,12 +135,6 @@
               <spirit:left>7</spirit:left>
               <spirit:right>0</spirit:right>
             </spirit:vector>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>sys_clk_p_0</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
           </spirit:wire>
         </spirit:port>
         <spirit:port>
@@ -106,6 +175,18 @@
             <spirit:direction>out</spirit:direction>
           </spirit:wire>
         </spirit:port>
+        <spirit:port>
+          <spirit:name>sys_clk_p_0</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>sys_clk_n_0</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
       </spirit:ports>
     </spirit:model>
   </spirit:component>
@@ -116,13 +197,6 @@
     <spirit:name>system_imp</spirit:name>
     <spirit:version>1.00.a</spirit:version>
     <spirit:componentInstances>
-      <spirit:componentInstance>
-        <spirit:instanceName>dyract_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="user" spirit:name="dyract" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">system_dyract_0_0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
       <spirit:componentInstance>
         <spirit:instanceName>imgProc_0</spirit:instanceName>
         <spirit:componentRef spirit:library="user" spirit:name="imgProc" spirit:vendor="Kuladeep" spirit:version="1.0"/>
@@ -135,6 +209,13 @@
         <spirit:componentRef spirit:library="user" spirit:name="openNoc" spirit:vendor="Kuladeep" spirit:version="1.0"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">system_openNoc_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>dyract_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="user" spirit:name="dyract" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">system_dyract_0_1</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>
@@ -156,16 +237,22 @@
       </spirit:interconnection>
       <spirit:interconnection>
         <spirit:name>imgProc_0_pciM</spirit:name>
-        <spirit:activeInterface spirit:busRef="Stream_Rd" spirit:componentRef="dyract_0"/>
         <spirit:activeInterface spirit:busRef="pciM" spirit:componentRef="imgProc_0"/>
+        <spirit:activeInterface spirit:busRef="Stream_Rd" spirit:componentRef="dyract_0"/>
       </spirit:interconnection>
     </spirit:interconnections>
     <spirit:adHocConnections>
       <spirit:adHocConnection>
-        <spirit:name>dyract_0_o_axi_strm_clk</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="o_axi_strm_clk"/>
-        <spirit:internalPortReference spirit:componentRef="imgProc_0" spirit:portRef="clk"/>
-        <spirit:internalPortReference spirit:componentRef="openNoc_0" spirit:portRef="clk"/>
+        <spirit:name>sys_reset_n_0_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="sys_reset_n_0"/>
+        <spirit:internalPortReference spirit:componentRef="imgProc_0" spirit:portRef="rstn"/>
+        <spirit:internalPortReference spirit:componentRef="openNoc_0" spirit:portRef="rstn"/>
+        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="sys_reset_n"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>sys_clk_p_0_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="sys_clk_p_0"/>
+        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="sys_clk_p"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>pci_exp_rxp_0_1</spirit:name>
@@ -178,17 +265,14 @@
         <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="pci_exp_rxn"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>sys_clk_p_0_1</spirit:name>
-        <spirit:externalPortReference spirit:portRef="sys_clk_p_0"/>
-        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="sys_clk_p"/>
-        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="sys_clk_n"/>
+        <spirit:name>dyract_0_pcie_link_status</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="pcie_link_status"/>
+        <spirit:externalPortReference spirit:portRef="pcie_link_status_0"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>sys_reset_n_0_1</spirit:name>
-        <spirit:externalPortReference spirit:portRef="sys_reset_n_0"/>
-        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="sys_reset_n"/>
-        <spirit:internalPortReference spirit:componentRef="imgProc_0" spirit:portRef="rstn"/>
-        <spirit:internalPortReference spirit:componentRef="openNoc_0" spirit:portRef="rstn"/>
+        <spirit:name>dyract_0_heartbeat</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="heartbeat"/>
+        <spirit:externalPortReference spirit:portRef="heartbeat_0"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>dyract_0_pci_exp_txp</spirit:name>
@@ -201,14 +285,15 @@
         <spirit:externalPortReference spirit:portRef="pci_exp_txn_0"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>dyract_0_pcie_link_status</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="pcie_link_status"/>
-        <spirit:externalPortReference spirit:portRef="pcie_link_status_0"/>
+        <spirit:name>sys_clk_n_0_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="sys_clk_n_0"/>
+        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="sys_clk_n"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>dyract_0_heartbeat</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="heartbeat"/>
-        <spirit:externalPortReference spirit:portRef="heartbeat_0"/>
+        <spirit:name>dyract_0_o_axi_strm_clk</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="dyract_0" spirit:portRef="o_axi_strm_clk"/>
+        <spirit:internalPortReference spirit:componentRef="openNoc_0" spirit:portRef="clk"/>
+        <spirit:internalPortReference spirit:componentRef="imgProc_0" spirit:portRef="clk"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
   </spirit:design>

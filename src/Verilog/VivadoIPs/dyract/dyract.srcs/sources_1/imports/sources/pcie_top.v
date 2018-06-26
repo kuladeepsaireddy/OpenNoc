@@ -404,6 +404,8 @@ module pcie_top # (
     .user_clk                                       ( user_clk ),
     .user_reset                                     ( user_reset ),
     .user_lnk_up                                    ( user_lnk_up ),
+    
+    .mmcm_lock                                      (              ),
 
     .s_axis_rq_tlast                                ( s_axis_rq_tlast ),
     .s_axis_rq_tdata                                ( s_axis_rq_tdata ),
@@ -524,18 +526,7 @@ module pcie_top # (
     .cfg_flr_done                                   ( cfg_flr_done ),
     .cfg_vf_flr_in_process                          ( cfg_vf_flr_in_process ),
     .cfg_vf_flr_done                                ( cfg_vf_flr_done ),
-
     .cfg_link_training_enable                       ( cfg_link_training_enable ),
-
-    .cfg_ext_read_received                          ( cfg_ext_read_received ),
-    .cfg_ext_write_received                         ( cfg_ext_write_received ),
-    .cfg_ext_register_number                        ( cfg_ext_register_number ),
-    .cfg_ext_function_number                        ( cfg_ext_function_number ),
-    .cfg_ext_write_data                             ( cfg_ext_write_data ),
-    .cfg_ext_write_byte_enable                      ( cfg_ext_write_byte_enable ),
-    .cfg_ext_read_data                              ( cfg_ext_read_data ),
-    .cfg_ext_read_data_valid                        ( cfg_ext_read_data_valid ),
-
     //-------------------------------------------------------------------------------//
     // EP Only                                                                       //
     //-------------------------------------------------------------------------------//

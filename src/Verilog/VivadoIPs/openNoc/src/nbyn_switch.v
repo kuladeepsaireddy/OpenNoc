@@ -25,10 +25,10 @@ output reg [total_width-1:0] o_data_pe
 wire leftToPe;
 wire bottomToPe;
 wire peTope;
-reg  leftToRight;
-reg leftToTop;
-reg bottomToRight;
-reg bottomToTop;
+wire leftToRight;
+wire leftToTop;
+wire bottomToRight;
+wire bottomToTop;
 wire peToTop;
 wire peToRight;
 
@@ -36,9 +36,9 @@ assign  o_ready_l = 1'b1;
 assign  o_ready_b = 1'b1;
 
 assign leftToPe = ((i_data_l[x_size-1:0]==x_coord) & (i_data_l[x_size+y_size-1:x_size]==y_coord) & i_valid_l);
-//assign leftToRight = ((i_data_l[x_size-1:0]!=x_coord) & i_valid_l);
-//assign leftToTop = (~leftToRight & (i_data_l[x_size+y_size-1:x_size]!=y_coord) & i_valid_l);
-
+assign leftToRight = ((i_data_l[x_size-1:0]!=x_coord) & i_valid_l);
+assign leftToTop = (i_data_l[x_size-1:0]==x_coord) & (i_data_l[x_size+y_size-1:x_size]!=y_coord) & i_valid_l;
+/*
 always @(*)
 begin
     if(i_valid_l)
@@ -65,9 +65,9 @@ begin
          leftToRight = 1'b0;
     end
 end
+*/
 
-
-always @(*)
+/*always @(*)
 begin
     if(i_valid_b)
     begin
@@ -92,11 +92,11 @@ begin
          bottomToTop = 1'b0;
          bottomToRight = 1'b0;
     end
-end
+end*/
 
-assign bottomToPe = ((i_data_b[x_size-1:0]==x_coord) & (i_data_b[x_size+y_size-1:x_size]==y_coord) & i_valid_b);
-//assign bottomToTop = (~bottomToRight & (i_data_b[x_size+y_size-1:x_size]!=y_coord ) & i_valid_b);
-//assign bottomToRight = ((i_data_b[x_size-1:0]!=x_coord) & i_valid_b);// ? 1'b1 : 1'b0;
+assign bottomToPe = (i_data_b[x_size-1:0]==x_coord) & (i_data_b[x_size+y_size-1:x_size]==y_coord) & i_valid_b;
+assign bottomToRight = (i_data_b[x_size+y_size-1:x_size]==y_coord) & (i_data_b[x_size-1:0]!=x_coord) & i_valid_b;// ? 1'b1 : 1'b0;
+assign bottomToTop = (i_data_b[x_size+y_size-1:x_size]!=y_coord ) & i_valid_b;
 
 assign peTope = ((i_data_pe[x_size-1:0]==x_coord) & (i_data_pe[x_size+y_size-1:x_size]==y_coord) & i_valid_pe & o_ready_pe);
 assign peToRight = ((i_data_pe[x_size-1:0]!=x_coord) & i_valid_pe & o_ready_pe);

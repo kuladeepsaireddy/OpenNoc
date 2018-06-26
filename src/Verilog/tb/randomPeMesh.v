@@ -26,7 +26,7 @@ generate
 	genvar x, y; 
 	for (x=0;x<X;x=x+1) begin:xs
 		for (y=0; y<Y; y=y+1) begin:ys
-			randomPe #(.xcord(x), .ycord(y),.X(X),.Y(Y), .dest_x(x_size), .dest_y(y_size),.num_of_pckts(numPackets),.rate(rate),.pat(pat)) pe (
+			randomPe #(.xcord(x), .ycord(y),.data_width(data_width),.X(X),.Y(Y), .x_size(x_size), .y_size(y_size),.total_width(total_width),.num_of_pckts(numPackets),.rate(rate),.pat(pat)) pe (
 			.clk(clk),
 			.rstn(rstn),
 			.i_data(w_data_pe[(total_width*x)+(total_width*X*y)+:total_width]),
