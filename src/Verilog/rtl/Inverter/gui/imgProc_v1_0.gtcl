@@ -1,0 +1,4 @@
+# This file is automatically written.  Do not modify.
+proc gen_USERPARAMETER_x_size_VALUE {X } {expr log10($X)/log10(2)}
+proc gen_USERPARAMETER_y_size_VALUE {Y } {expr log10($Y)/log10(2)}
+proc gen_USERPARAMETER_total_width_VALUE {x_size y_size pck_num data_width } {expr $x_size+$y_size+$pck_num+$data_width}

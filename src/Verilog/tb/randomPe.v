@@ -1,12 +1,13 @@
 `timescale 1ns/1ps
 //`define DEBUG
 
-module randomPe #(parameter xcord=0, ycord=0,data_width=240, X=4,Y=4, x_size=2, y_size=2,total_width=(x_size+y_size+data_width),num_of_pckts=100,rate=1,pat="MixedNeighbour")
+module randomPe #(parameter xcord=0, ycord=0,data_width=256, X=4,Y=4, pkt_no_field_size=0,x_size=$clog2(X), y_size=$clog2(Y),total_width=(x_size+y_size+data_width+pkt_no_field_size),num_of_pckts=100,rate=1,pat="MixedNeighbour")
 (
 input wire clk,
 input wire rstn,
 input wire [total_width-1:0] i_data,
 input wire i_valid,
+output reg o_ready,
 output  reg [total_width-1:0] o_data,
 output wire o_valid,
 output wire  done,
@@ -20,7 +21,6 @@ output wire [31:0] receivedPktCount
 );
 
 integer counter;
-wire [31:0] payload;
 integer accept_counter=0;
 integer address;
 wire check_reg;
@@ -38,17 +38,24 @@ reg [31:0] receiveCounters [X*Y-1:0];
 
 integer               receive_log_file;
 reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
-integer j;
 integer latency;
 
 integer seed = ycord*X+xcord;
 integer i;
 
 assign receivedPktCount = in_data_count;
-assign payload = i_data[dest_x+dest_y+source_x+source_y+data_width-1:dest_x+dest_y+source_x+source_y];
+  
+always @(posedge clk)
+begin
+	if(i_valid & o_ready)
+		o_ready <= 1'b0;
+	else
+		o_ready <= 1'b1;
+end
 
-integer               receive_log_file;
-reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
+//assign o_ready = i_ready;
+//assign payload = i_data[dest_x+dest_y+source_x+source_y+data_width-1:dest_x+dest_y+source_x+source_y];
+
 
 initial
 begin
@@ -136,15 +143,15 @@ begin
         end
 	    o_data[x_size-1:0]<=dest_x_addr;
 	    o_data[x_size+y_size-1:x_size]<=dest_y_addr;
-	    o_data[x_size+y_size+data_width-1:x_size+y_size]<=counter;
-	    //o_data[x_size+y_size+data_width-1:x_size+y_size]<=ycord*X+xcord;
+	    //o_data[x_size+y_size+data_width-1:x_size+y_size]<=counter;
+	    o_data[total_width-1:x_size+y_size]<=ycord*X+xcord;
      end	
      else
 	     valid<=0;
  end 
 
 assign destinationPe = o_data[x_size+y_size-1:x_size]*X + o_data[x_size-1:0]; //PE number of destination
-assign sourcePe = i_data[x_size+y_size+data_width-1:x_size+y_size]; //PE number of source
+assign sourcePe = i_data[total_width-1:x_size+y_size]; //PE number of source
 
 always@(posedge clk)
 begin
@@ -152,19 +159,21 @@ begin
     begin
 	   accept_counter<=accept_counter+1;
 	   transmitCounters[destinationPe] <= transmitCounters[destinationPe] + 1;
+	   //$display($time,,,,"Transmitting from %d to %d",ycord*X+xcord,destinationPe);
     end
 end
  
  
  always@(posedge clk)
  begin
-    if(i_valid)
+    if(i_valid & o_ready)
     begin
        in_data_count<=in_data_count+1;
        //receiveCounters[sourcePe] <= receiveCounters[sourcePe] + 1;
-       latency = counter - i_data[x_size+y_size+data_width-1:x_size+y_size];
+       latency = counter - i_data[total_width-1:x_size+y_size];
        $fwrite(receive_log_file,"%0d\n",latency);
        $fflush(receive_log_file);
+	   //$display("Received from %d to %d",sourcePe,ycord*X+xcord);
     end 
  end 
   

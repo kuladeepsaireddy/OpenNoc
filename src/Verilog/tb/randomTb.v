@@ -3,14 +3,15 @@
 
 `define X 8
 `define Y 8
-`define x_size $clog2(`X)
-`define y_size $clog2(`Y)
-`define data_width 32
-`define total_width (`x_size+`y_size+`data_width)
+`define data_width 256
+`define pkt_no_field_size 12
 `define numPackets 100
 `define injectRate 1
 `define pattern "RANDOM"
-`define clkPeriod 2631
+`define clkPeriod 5000
+`define x_size $clog2(`X)
+`define y_size $clog2(`Y)
+`define total_width (`x_size+`y_size+`pkt_no_field_size+`data_width)
 
 
 module randomTb();
@@ -21,13 +22,12 @@ wire [(`X*`Y)-1:0] r_valid_pe;
 wire [(`total_width*`X*`Y)-1:0] r_data_pe;
 wire [(`X*`Y)-1:0] r_ready_pe;
 wire [(`X*`Y)-1:0] w_valid_pe;
+wire [(`X*`Y)-1:0] w_ready_pe;
 wire [(`total_width*`X*`Y)-1:0] w_data_pe;
 wire [(32*`X*`Y)-1:0] receiveCount;
 integer startTime;
 reg  start;
 reg [(`X*`Y)-1:0] enableSend;
-integer               receive_log_file;
-reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
 
 integer               receive_log_file;
 reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
@@ -58,7 +58,7 @@ end
 
 
 
-openNocTop #(.X(`X),.Y(`Y),.data_width(`data_width), .x_size(`x_size),.y_size(`y_size))
+openNocTop #(.X(`X),.Y(`Y),.data_width(`data_width),.pkt_no_field_size(`pkt_no_field_size))
 ON
 (
 .clk(clk),
@@ -67,10 +67,11 @@ ON
 .r_data_pe(r_data_pe),
 .r_ready_pe(r_ready_pe),
 .w_valid_pe(w_valid_pe),
-.w_data_pe(w_data_pe)
+.w_data_pe(w_data_pe),
+.w_ready_pe(w_ready_pe)
 );
 
-randomPeTop #(.X(`X),.Y(`Y),.data_width(`data_width), .x_size(`x_size),.y_size(`y_size),.numPackets(`numPackets),.rate(`injectRate),.pat(`pattern)) 
+randomPeTop #(.X(`X),.Y(`Y),.data_width(`data_width),.pkt_no_field_size(`pkt_no_field_size),.numPackets(`numPackets),.rate(`injectRate),.pat(`pattern)) 
 rPeT(
 .clk(clk),
 .rstn(rst),
@@ -80,6 +81,7 @@ rPeT(
 .r_ready_pe(r_ready_pe),
 .w_valid_pe(w_valid_pe),
 .w_data_pe(w_data_pe),
+.w_ready_pe(w_ready_pe),
 .done(done),
 .start(start),
 .enableSend(enableSend),
