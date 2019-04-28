@@ -5,12 +5,9 @@ source [file join [file dirname [file dirname [info script]]] gui/openNoc_v1_0.g
 # Definitional proc to organize widgets for parameters.
 proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
-  #Adding Page
-  set Page_0 [ipgui::add_page $IPINST -name "Page 0"]
-  ipgui::add_param $IPINST -name "X" -parent ${Page_0}
-  ipgui::add_param $IPINST -name "Y" -parent ${Page_0}
-  ipgui::add_param $IPINST -name "data_width" -parent ${Page_0}
-
+  ipgui::add_param $IPINST -name "X"
+  ipgui::add_param $IPINST -name "Y"
+  ipgui::add_param $IPINST -name "data_width"
   ipgui::add_param $IPINST -name "pkt_no_field_size"
 
 }

@@ -1,9 +1,9 @@
 `timescale 1ns/1ps
 
-`define X 16
-`define Y 16
+`define X 4
+`define Y 4
 `define data_width 256
-`define pck_num 12
+`define pck_num 14
 
 `define headerSize 1078
 `define imageSize 262144

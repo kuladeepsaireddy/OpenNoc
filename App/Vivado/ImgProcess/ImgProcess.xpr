@@ -32,20 +32,20 @@
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSABoardId" Val="ac701"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="329"/>
+    <Option Name="WTXSimLaunchSim" Val="364"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="29"/>
-    <Option Name="WTModelSimExportSim" Val="29"/>
-    <Option Name="WTQuestaExportSim" Val="29"/>
-    <Option Name="WTIesExportSim" Val="29"/>
-    <Option Name="WTVcsExportSim" Val="29"/>
-    <Option Name="WTRivieraExportSim" Val="29"/>
-    <Option Name="WTActivehdlExportSim" Val="29"/>
+    <Option Name="WTXSimExportSim" Val="30"/>
+    <Option Name="WTModelSimExportSim" Val="30"/>
+    <Option Name="WTQuestaExportSim" Val="30"/>
+    <Option Name="WTIesExportSim" Val="30"/>
+    <Option Name="WTVcsExportSim" Val="30"/>
+    <Option Name="WTRivieraExportSim" Val="30"/>
+    <Option Name="WTActivehdlExportSim" Val="30"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -171,12 +171,11 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2017"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="myFifo_synth_1" Type="Ft3:Synth" SrcSet="myFifo" Part="xc7vx690tffg1761-2" ConstrsSet="myFifo" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/myFifo_synth_1" IncludeInArchive="true">
+    <Run Id="myFifo_synth_1" Type="Ft3:Synth" SrcSet="myFifo" Part="xc7vx690tffg1761-2" ConstrsSet="myFifo" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>

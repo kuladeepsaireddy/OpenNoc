@@ -5,7 +5,7 @@
 `define Y 8
 `define data_width 256
 `define pkt_no_field_size 12
-`define numPackets 100
+`define numPackets 1000
 `define injectRate 1
 `define pattern "RANDOM"
 `define clkPeriod 5000
